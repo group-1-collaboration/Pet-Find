@@ -14,5 +14,85 @@
         "genter": "Male",
         "description": "Highly intelligent and protective of their families.",
         "image": "images/Rottweiler.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Fluff",
+        "Breed": "Calico Scottish Fold kitten",
+        "genter": "female",
+        "description": "Highly intelligent and protective of their families.",
+        "image": "images/caclico-kitten.jpg"
+    },
+    {
+        "id": 4,
+        "name": "lulu",
+        "Breed": "Maltese puppy",
+        "genter": "Male",
+        "description": "Affectionate.",
+        "image": "images/maltese-puppy.jpg"
+    },
+    {
+        "id": 5,
+        "name": "sky",
+        "Breed": "Blue-Fronted Amazon Parrot",
+        "genter": "Male",
+        "description": "Highly intelligent ,social and capable of mimicing human speech",
+        "image": "images/blue-parrot.jpg"
+    },
+    {
+        "id": 6,
+        "name": "jojo",
+        "Breed": "Golden Retriver",
+        "genter": "Male",
+        "description": "Highly intelligent and protective of their families.",
+        "image": "images/golden retriver.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Rocky",
+        "Breed": "German Shephered",
+        "genter": "Male",
+        "description": "Intelligent, loyal and strong",
+        "image": "images/german.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Chloe",
+        "Breed": "Brown mackere tabby cat",
+        "genter": "Male",
+        "description": "Prominent dark stripes and striking green eyes",
+        "image": "images/tabbycat.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Blue",
+        "Breed": "Siamese Cat",
+        "genter": "female",
+        "description": "Piercing blue eyes and a slender yet muscular build.",
+        "image": "images/siamese.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Jen",
+        "Breed": "Savannah Cat",
+        "genter": "female",
+        "description": "Loyalty, high energy levels, and large ears",
+        "image": "images/savannah-cat.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Bingo",
+        "Breed": "Yellow-crowned Amazon parrot",
+        "genter": "male",
+        "description": "He is a highly intelligent and social bird native to the rainforests of South and Central America.",
+        "image": "images/yellow-parrot.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Charppy",
+        "Breed": "Pineapple Green-Cheeked Conure.",
+        "genter": "female",
+        "description": "Intelligent, playful, and relatively quiet pet.",
+        "image": "images/conure.jpg"
     }
 ]
