@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "Snow",
+        "Breed": "Pomeranian",
+        "genter": "Female",
+        "description": "Friendly and playfull.",
+        "image": "images/pomeranian.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Buddy",
+        "Breed": "Rotterweiler",
+        "genter": "Male",
+        "description": "Highly intelligent and protective of their families.",
+        "image": "images/Rottweiler.jpg"
+    }
+]
