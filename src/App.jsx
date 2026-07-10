@@ -3,14 +3,22 @@ import React from 'react'
 import PetList from './components/PetList'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
+import PetDetails from './components/PetDetails'
 
 function App() {
   return (
-    <div>
-      <Navbar />
+    <>
+    <Router>
+      <Navbar /> 
       <Header />
-      <PetList/>
-    </div>
+      <Routes>
+        <Route path='/' element={<PetList/>}/>
+        <Route path='/pets/:id' element={<PetDetails/>}/>
+      </Routes>
+    </Router>
+     
+      
+    </>
   )
 }
 
