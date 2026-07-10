@@ -1,6 +1,8 @@
 import React from 'react'
 import backgroundImage from "@/assets/headerbg.png"
-
+import { Link } from 'react-router-dom'
+import { Button } from '@base-ui/react'
+import { PawPrint } from 'lucide-react'
 
 function Header() {
   return (
@@ -16,13 +18,14 @@ function Header() {
           </div>
 
          <div className='p-3'>
-          <p className='text-xl text-white'>Open your heart. Change a life. <p>Find your perfect companion today.</p> </p>
+          <p className='text-xl text-white'>Open your heart. Change a life. <p>Find your perfect companion today.</p></p>
+          <p className='text-xl text-orange-300'>Register, to adopt a pet or <a href="#login" className='text-orange-500 '> sign in </a> to existing account. </p>
          </div>
 
-        <div>
+        <div className='p-4'>
           <Link to={'/register'}>
-             <Button className="bg-amber-500 hover:bg-amber-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
-              sign up 
+             <Button className="flex items-center gap-2 bg-orange-500 hover:bg-amber-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
+               Register<PawPrint className='w-5 h-5'/> 
              </Button>
             </Link>
         </div>
