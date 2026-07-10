@@ -21,7 +21,7 @@
         "Breed": "Calico Scottish Fold kitten",
         "gender": "female",
         "description": "Highly intelligent and protective of their families.",
-        "image": "/images/caclico-kitten.jpg"
+        "image": "/images/calico-kitten.jpg"
     },
     {
         "id": 4,
@@ -45,7 +45,7 @@
         "Breed": "Golden Retriver",
         "gender": "Male",
         "description": "Highly intelligent and protective of their families.",
-        "image": "/images/golden retriver.jpg"
+        "image": "/images/golden-retriver.jpg"
     },
     {
         "id": 7,
