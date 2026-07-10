@@ -94,5 +94,13 @@
         "gender": "female",
         "description": "Intelligent, playful, and relatively quiet pet.",
         "image": "images/conure.jpg"
+    },
+    {
+        "id": 13,
+        "name": "lulu",
+        "Breed": "Orange Tabby Cat",
+        "gender": "female",
+        "description": "The cat has distinctive orange stripes and amber eyes.",
+        "image": "images/tabby3.jpg"
     }
 ]
