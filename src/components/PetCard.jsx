@@ -4,7 +4,7 @@ function PetCard({pet}) {
   return (
     <div className='bg-white rounded-lg shadow-md p-4'>
       
-      <img src={pet.img} alt={pet.name} className='w-full h-52 object-cover rounded-md'/>
+      <img src={pet.image} alt={pet.name} className='w-full h-52 object-cover rounded-md'/>
 
       <h2 className='text-xl font-bold mt-3'>
         {pet.name}
