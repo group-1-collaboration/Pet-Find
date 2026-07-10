@@ -1,24 +1,32 @@
+import { Link } from "react-router-dom"
+import { Button } from "@base-ui/react"
 
 function Navbar() {
   return (
-<nav className="sticky top-0 z-50 w-full border-b bg-slate-700/95 backdrop-blur supports-backdrop-filter:bg-slate-700/60 flex justify-between items-center p-4 text-white">
-      {/* Clickable Brand Title navigating back home */}
+<nav className="sticky top-0 z-50 w-full border-b border-orange-500/20 bg-black/80 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
+    {/* Clickable Brand Title navigating back home */}
       <div className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <Link to={'/'}>
-        <p className='text-2xl'> Eye<span className='text-blue-400'>see</span></p>  
+        <p className='text-2xl'> Pet<span className='text-orange-400'>Find</span></p>  
         </Link>
       </div>
     
      <div>
-     <Link to={'/'} className="hover:text-cyan-400 transition duration-300">
+     <Link to={'/'} className="hover:text-orange-400 transition duration-300">
      Home
      </Link>
     </div>
 
      
    <div>
-    <Link to={'/footer'} className="hover:text-cyan-400 transition duration-300">
+    <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
       contact 
+    </Link>
+    </div>
+
+   <div>
+    <Link to={'/footer'} className="hover:text-orange-400 transition duration-300">
+      footer
     </Link>
     </div>
     
@@ -29,9 +37,8 @@ function Navbar() {
             </Button>
             </Link>
            
-
              <Link to={'/register'}>
-             <Button className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
+             <Button className="bg-amber-500 hover:bg-amber-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
               sign up 
             </Button>
              </Link>
