@@ -12,19 +12,19 @@ function PetCard({pet}) {
       </h2>
 
       <p>
-        <strong>Breed:</strong>{pet.Breed}
+        <strong>Breed:</strong> {pet.Breed}
       </p>
 
       <p>
-         <strong>Gender:</strong>{pet.gender}     
+         <strong>Gender:</strong> {pet.gender}     
           </p>
 
       <p>
-        <strong>Description:</strong>{pet.description}
+        <strong>Description:</strong> {pet.description}
       </p>
 
      <Link to={`/pets/${pet.id}`}>
-     <button className='mt-4 bg-orange-500 text-white px-4 py-2 rounded mt-auto hover:bg-orange-600 cursor-pointer'>
+     <button className='mt-7 bg-orange-500 text-white px-4 py-2 rounded mt-auto hover:bg-orange-600 cursor-pointer'>
         View Details
       </button>
      </Link>
