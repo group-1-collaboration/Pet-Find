@@ -5,7 +5,7 @@
         "Breed": "Pomeranian",
         "gender": "Female",
         "description": "Friendly and playfull.",
-        "image": "images/pomeranian.jpg"
+        "image": "/images/pomeranian.jpg"
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "Breed": "Rotterweiler",
         "gender": "Male",
         "description": "Highly intelligent and protective of their families.",
-        "image": "images/Rottweiler.jpg"
+        "image": "/images/Rottweiler.jpg"
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "Breed": "Calico Scottish Fold kitten",
         "gender": "female",
         "description": "Highly intelligent and protective of their families.",
-        "image": "images/caclico-kitten.jpg"
+        "image": "/images/caclico-kitten.jpg"
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "Breed": "Maltese puppy",
         "gender": "Male",
         "description": "Affectionate.",
-        "image": "images/maltese-puppy.jpg"
+        "image": "/images/maltese-puppy.jpg"
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "Breed": "Blue-Fronted Amazon Parrot",
         "gender": "Male",
         "description": "Highly intelligent ,social and capable of mimicing human speech",
-        "image": "images/blue-parrot.jpg"
+        "image": "/images/blue-parrot.jpg"
     },
     {
         "id": 6,
@@ -45,7 +45,7 @@
         "Breed": "Golden Retriver",
         "gender": "Male",
         "description": "Highly intelligent and protective of their families.",
-        "image": "images/golden retriver.jpg"
+        "image": "/images/golden retriver.jpg"
     },
     {
         "id": 7,
@@ -53,7 +53,7 @@
         "Breed": "German Shephered",
         "gender": "Male",
         "description": "Intelligent, loyal and strong",
-        "image": "images/german.jpg"
+        "image": "/images/german.jpg"
     },
     {
         "id": 8,
@@ -61,7 +61,7 @@
         "Breed": "Brown mackere tabby cat",
         "gender": "Male",
         "description": "Prominent dark stripes and striking green eyes",
-        "image": "images/tabbycat.jpg"
+        "image": "/images/tabbycat.jpg"
     },
     {
         "id": 9,
@@ -69,7 +69,7 @@
         "Breed": "Siamese Cat",
         "gender": "female",
         "description": "Piercing blue eyes and a slender yet muscular build.",
-        "image": "images/siamese.jpg"
+        "image": "/images/siamese.jpg"
     },
     {
         "id": 10,
@@ -77,7 +77,7 @@
         "Breed": "Savannah Cat",
         "gender": "female",
         "description": "Loyalty, high energy levels, and large ears",
-        "image": "images/savannah-cat.jpg"
+        "image": "/images/savannah-cat.jpg"
     },
     {
         "id": 11,
@@ -85,7 +85,7 @@
         "Breed": "Yellow-crowned Amazon parrot",
         "gender": "male",
         "description": "He is a highly intelligent and social bird native to the rainforests of South and Central America.",
-        "image": "images/yellow-parrot.jpg"
+        "image": "/images/yellow-parrot.jpg"
     },
     {
         "id": 12,
@@ -93,7 +93,7 @@
         "Breed": "Pineapple Green-Cheeked Conure.",
         "gender": "female",
         "description": "Intelligent, playful, and relatively quiet pet.",
-        "image": "images/conure.jpg"
+        "image": "/images/conure.jpg"
     },
     {
         "id": 13,
@@ -101,6 +101,6 @@
         "Breed": "Orange Tabby Cat",
         "gender": "female",
         "description": "The cat has distinctive orange stripes and amber eyes.",
-        "image": "images/tabby3.jpg"
+        "image": "/images/tabby3.jpg"
     }
 ]

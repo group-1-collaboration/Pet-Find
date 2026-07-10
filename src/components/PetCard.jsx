@@ -15,11 +15,11 @@ function PetCard({pet}) {
       </p>
 
       <p>
-        <strong>Age:</strong>{pet.age}
-      </p>
+         <strong>Gender:</strong>{pet.gender}     
+          </p>
 
       <p>
-        <strong>Gender:</strong>{pet.gender}
+        <strong>Description:</strong>{pet.description}
       </p>
 
       <button className='mt-4 bg-orange-500 text-white px-4 py-2 rounded'>
