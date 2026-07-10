@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import petData from "../data/pets.json"
+import { useParams } from 'react-router-dom'
 
+function PetDetails() {
+    //Get the id from the URL
+    const {id} = useParams
 
-function PetDetails({pet}) {
+    //find the selected pet
+    const pet = petData.find((pet) => pet.id === Number(id))
+    
   return (
     <div className='max-w-4xl mx-auto p-6'>
       <img src={pet.image} alt={pet.name} className='w-full object-cover rounded-lg'/>

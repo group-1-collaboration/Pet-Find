@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function PetCard({pet}) {
   return (
@@ -22,9 +23,12 @@ function PetCard({pet}) {
         <strong>Description:</strong>{pet.description}
       </p>
 
-      <button className='mt-4 bg-orange-500 text-white px-4 py-2 rounded mt-auto hover:bg-orange-600 cursor-pointer'>
+     <Link to={`/pets/${pet.id}`}>
+     <button className='mt-4 bg-orange-500 text-white px-4 py-2 rounded mt-auto hover:bg-orange-600 cursor-pointer'>
         View Details
       </button>
+     </Link>
+      
     </div>
   )
 }
