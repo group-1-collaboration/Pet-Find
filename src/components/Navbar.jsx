@@ -20,13 +20,13 @@ function Navbar() {
      
    <div>
     <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
-      contact 
+      About us 
     </Link>
     </div>
 
    <div>
     <Link to={'/footer'} className="hover:text-orange-400 transition duration-300">
-      footer
+      contact
     </Link>
     </div>
     
@@ -36,12 +36,6 @@ function Navbar() {
               Login
             </Button>
             </Link>
-           
-             <Link to={'/register'}>
-             <Button className="bg-amber-500 hover:bg-amber-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
-              sign up 
-            </Button>
-             </Link>
             
           </div>
 </nav>
