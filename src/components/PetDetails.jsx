@@ -9,7 +9,7 @@ function PetDetails() {
 
     //find the selected pet
     const pet = petData.find((pet) => pet.id === Number(id))
-    
+
   return (
     <div className='max-w-4xl mx-auto p-6'>
       <img src={pet.image} alt={pet.name} className='w-full object-cover rounded-lg'/>
@@ -43,7 +43,6 @@ function PetDetails() {
         <strong>House Trained</strong>{""}
         {pet.houseTrained ? "Yes" : "No"}
       </p>
-
       <p>
         <strong>Health Status:</strong> {pet.healthstatuse}
       </p>
