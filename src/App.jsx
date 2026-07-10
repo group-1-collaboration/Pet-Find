@@ -3,6 +3,7 @@ import React from 'react'
 import PetList from './components/PetList'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
+import Footer from './components/footer'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Header />
       <PetList/>
+      <Footer />
     </div>
   )
 }
