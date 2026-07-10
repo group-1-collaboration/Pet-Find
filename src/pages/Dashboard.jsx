@@ -5,22 +5,6 @@ import EditPet from "../component/EditPet";
 import ManagePets from "../component/ManagePets";
 import ManageRequests from "../component/ManageRequests";
 
-/*
-  Design tokens (see accompanying design notes):
-  --bg:        #12201D   deep shelter-teal background
-  --surface:   #1A2E28   card surface
-  --line:      #2B4038   hairline borders
-  --text:      #F2EFE9   warm off-white
-  --muted:     #9FB3AC   muted teal-grey
-  --accent:    #E8A33D   warm amber (the "stamp" color)
-  --accent-2:  #4FA88C   soft teal (secondary actions)
-  --danger:    #D9695F   muted red (delete)
-
-  Fonts: "Fraunces" for display headings, "Inter" for UI/body text.
-  Import both in your project's index.html or global CSS, e.g.:
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-*/
-
 const initialPets = [
   {
     id: "p1",
