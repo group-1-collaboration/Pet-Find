@@ -19,7 +19,7 @@ function Header() {
           </div>
 
          <div className='p-3'>
-          <p className='text-xl text-white'>Open your heart. Change a life. <p>Find your perfect companion today.</p></p>
+          <p className='text-2xl text-white'>Open your heart. Change a life. <p>Find your perfect companion today.</p></p>
           <p className='text-lg text-orange-500'>Register, to adopt a pet or <a href="#login" className='text-orange-300 '> sign in </a> to your account. </p>
          </div>
 
