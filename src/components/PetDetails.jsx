@@ -5,10 +5,13 @@ import { useParams } from 'react-router-dom'
 
 function PetDetails() {
     //Get the id from the URL
-    const {id} = useParams
+    const {id} = useParams()
 
     //find the selected pet
     const pet = petData.find((pet) => pet.id === Number(id))
+    if(!pet) {
+        return <h2>Pet not found.</h2>
+    }
 
   return (
     <div className='max-w-4xl mx-auto p-6'>
