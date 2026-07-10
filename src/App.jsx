@@ -1,19 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import React from 'react'
 import PetList from './components/PetList'
-import PetDetails from './components/PetDetails'
+import Navbar from './components/Navbar'
+import Header from './components/Header'
 
 function App() {
   return (
-    <>
-    <Router>
-      <Routes>
-        <Route path='/' element={ <PetList/>}/>
-        <Route path='/pets/:id' element={<PetDetails/>}/>
-      </Routes>
-    </Router>
-     
-    </>
+    <div>
+      <Navbar />
+      <Header />
+      <PetList/>
+    </div>
   )
 }
 
