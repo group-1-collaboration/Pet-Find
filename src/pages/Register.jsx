@@ -2,7 +2,7 @@ import React from "react";
 import loginBackground from "@/assets/loginbg.png";
 
 function Register() {
-    
+
 //set variables
 const { register } = useAuth();
 const navigate = useNavigate();
@@ -14,6 +14,13 @@ const [formData, setFormData] = useState({
   password: "",
   confirmPassword: "",
 });
+//handle input changes
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
 
 const [error, setError] = useState("");
 
