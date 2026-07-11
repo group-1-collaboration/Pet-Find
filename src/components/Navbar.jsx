@@ -4,6 +4,7 @@ import { Heart } from "lucide-react"
 import { useContext, useState } from "react"
 import { FavouritesContext } from './context/FavouritesContext'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
+import { useAuth } from "@/context/AuthContext"
 
 function Navbar() {
   const {favourites} = useContext(FavouritesContext)
@@ -12,7 +13,7 @@ function Navbar() {
 
   const favouriteCount = favourites?.length || 0;
   return (
-<nav className="sticky top-0 z-50 w-full border-b border-orange-500/20 bg-black/80 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
+<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
     {/* Clickable Brand Title navigating back home */}
       <div className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <Link to={'/'}>
@@ -29,13 +30,13 @@ function Navbar() {
      
    <div>
     <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
-      contact 
+      About us 
     </Link>
     </div>
 
    <div>
     <Link to={'/footer'} className="hover:text-orange-400 transition duration-300">
-      footer
+      contact
     </Link>
     </div>
 
@@ -91,17 +92,12 @@ function Navbar() {
           <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-sz">{favourites.length}</span>
         </Link> */}
           <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">
+
             <Link to={'/login'}>
-             <Button className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
+             <Button className="bg-orange-400 text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
               Login
-            </Button>
+             </Button>
             </Link>
-           
-             <Link to={'/register'}>
-             <Button className="bg-amber-500 hover:bg-amber-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
-              sign up 
-            </Button>
-             </Link>
             
           </div>
 </nav>
