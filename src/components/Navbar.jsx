@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { Button } from "@base-ui/react"
 import { Heart } from "lucide-react"
+import { useAuth } from "@/context/AuthContext"
 
 function Navbar() {
   return (
@@ -32,8 +33,6 @@ function Navbar() {
     </div>
     
           <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">
-
-           <Heart />
 
             <Link to={'/login'}>
              <Button className="bg-orange-400 text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
