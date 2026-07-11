@@ -12,19 +12,7 @@ import { seedAdmin } from './utils/seedAdmin'
 import Dashboard from './pages/Dashboard'
 import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
-
-
-// function App() {
-//   return (
-//     <>
-//     <Router>
-//       <Navbar /> 
-//       <Header />
-//       <Routes>
-//       </Routes>
-//     </Router>
-//     </>
-//   )}
+import Categories from './components/Categories'
 
 function Home(){
   return(
@@ -32,6 +20,7 @@ function Home(){
      <Navbar />
       <Header />
       <AboutUs />
+      <Categories/>
       <PetList/>
       <Footer />
     </>
