@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { Button } from "@base-ui/react"
 import { Heart } from "lucide-react"
+import { useAuth } from "@/context/AuthContext"
 
 function Navbar() {
   return (
