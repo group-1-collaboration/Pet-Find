@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import React from 'react'
 import PetList from './components/PetList'
 import Navbar from './components/Navbar'
@@ -36,7 +36,14 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
+        
+        <Route path="/dashboard" 
+        element={
+        isAuthenticated && user?.role === "admin"
+          ?<Dashboard/>
+          :<Navigate to= "/" replace/>
+        }
+        />
       </Routes>
   )
 }
