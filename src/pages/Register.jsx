@@ -1,11 +1,16 @@
 import React from "react";
 import loginBackground from "@/assets/loginbg.png";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 function Register() {
 
 //set variables
 const { register } = useAuth();
 const navigate = useNavigate();
+const [error, setError] = useState("");
+
 
 const [formData, setFormData] = useState({
   fullName: "",
@@ -66,11 +71,9 @@ const newUser ={
 
   // Go to the home page
   navigate("/login");
+
 };
 
-}
-
-const [error, setError] = useState("");
 
   return (
     <section
