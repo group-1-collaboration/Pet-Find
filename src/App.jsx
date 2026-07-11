@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard'
 import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
 import Categories from './components/Categories'
+import CategoryPets from './components/CategoryPets'
 
 function Home(){
   return(
@@ -21,7 +22,7 @@ function Home(){
       <Header />
       <AboutUs />
       <Categories/>
-      <PetList/>
+      {/* <PetList/> */}
       <Footer />
     </>
   )
@@ -40,6 +41,8 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path='/pets/:id' element={<PetDetails/>}/>
+        <Route path='/pets' element={<PetList/>}/>
+        <Route path='/category/:categoryName' element={<CategoryPets/>}/>
 
         
         <Route path="/dashboard" 
