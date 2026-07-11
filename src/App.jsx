@@ -9,6 +9,7 @@ import  Login  from './pages/Login'
 import Register from './pages/Register'
 import { seedAdmin } from './utils/seedAdmin'
 import Dashboard from './pages/Dashboard'
+import { useEffect } from 'react'
 
 function Home(){
   return(
