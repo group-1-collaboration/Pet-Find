@@ -34,3 +34,25 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('auth_user', JSON.stringify(userData));
     setUser(userData);
   };
+
+  // Logout
+  const logout = () => {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('auth_user');
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, isAuthenticated, login, register, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
