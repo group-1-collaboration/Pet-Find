@@ -20,14 +20,14 @@ export default function EditPet({ pet, onSave, onCancel }) {
       onClick={onCancel}
     >
       <div
-        className="bg-[#1A2E28] border border-[#2B4038] rounded-xl p-6 w-full max-w-lg"
+        className="bg-[#e4dad0] border rounded-xl p-6 w-full max-w-lg"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl" style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}>
+        <div className="flex items-center justify-between mb-4 ">
+          <h2 className="text-2xl font-extrabold" style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}>
             Edit {pet.name}
           </h2>
-          <button onClick={onCancel} className="text-[#9FB3AC] hover:text-[#F2EFE9]">
+          <button onClick={onCancel} className=" hover:text-[#454545]">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -82,13 +82,13 @@ export default function EditPet({ pet, onSave, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="px-4 py-2 rounded-lg text-sm text-[#9FB3AC] hover:text-[#F2EFE9]"
+              className="px-4 py-2 rounded-lg text-sm bg-white hover:text-[#464646]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex items-center gap-2 bg-[#E8A33D] text-[#12201D] font-medium px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-opacity"
+              className="flex items-center gap-2 bg-[#da760c] text-[#12201D] font-medium px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-opacity"
             >
               <Save className="w-4 h-4" />
               Save changes
@@ -100,12 +100,11 @@ export default function EditPet({ pet, onSave, onCancel }) {
       <style>{`
         .input {
           width: 100%;
-          background: #12201D;
+          background: #ffff;
           border: 1px solid #2B4038;
           border-radius: 0.5rem;
           padding: 0.5rem 0.75rem;
           font-size: 0.875rem;
-          color: #F2EFE9;
           outline: none;
         }
         .input:focus { border-color: #E8A33D; }
@@ -117,7 +116,7 @@ export default function EditPet({ pet, onSave, onCancel }) {
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="block text-xs text-[#9FB3AC] mb-1">{label}</span>
+      <span className="block text-xs mb-1">{label}</span>
       {children}
     </label>
   );

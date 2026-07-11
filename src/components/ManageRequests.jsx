@@ -9,10 +9,10 @@ export default function ManageRequests({ requests, onApprove, onReject }) {
 
   return (
     <div>
-      <h1 className="text-4xl mb-1 text-white" style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}>
+      <h1 className="text-4xl mb-1" style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}>
         Adoption requests
       </h1>
-      <p className="text-white mb-6 text-sm">Review and respond to adoption applications.</p>
+      <p className="mb-6 text-sm">Review and respond to adoption applications.</p>
 
       <div className="flex gap-3 mb-5">
         {["pending", "approved", "rejected", "all"].map((f) => (
@@ -22,7 +22,7 @@ export default function ManageRequests({ requests, onApprove, onReject }) {
             className={`text-xs px-3 py-1.5 rounded-full capitalize border ${
               filter === f
                 ? "bg-[#da760c] text-white border-[#E8A33D] font-medium"
-                : "border-[#2B4038] text-[#9FB3AC] hover:text-[#F2EFE9]"
+                : "border-[#2B4038]  hover:text-[#4e4e4e]"
             }`}
           >
             {f}
@@ -34,7 +34,7 @@ export default function ManageRequests({ requests, onApprove, onReject }) {
         {filtered.map((req) => (
           <div
             key={req.id}
-            className="bg-white border border-[#2B4038] rounded-xl p-4 flex flex-col md:flex-row md:items-center gap-3 md:gap-6"
+            className="bg-white border border-[#2B4038] rounded-xl p-4 flex flex-col md:flex-row md:items-center gap-3 md:gap-6 shadow-sm"
           >
             <div className="flex-1 p-2 gap-1">
               <div className="flex items-center gap-2 mb-1 ">
