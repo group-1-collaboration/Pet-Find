@@ -78,8 +78,14 @@ const newUser ={
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-6"
       style={{
         backgroundImage: `url(${loginBackground})`,
-      }}
-    >
+      }}>
+
+      {error && (
+        <p className="mb-4 rounded-lg bg-red-100 p-3 text-center text-red-600">
+           {error}
+         </p>
+       )}
+
       <div className="w-full max-w-md rounded-3xl border border-white/30 bg-white/20 p-8 backdrop-blur-xl shadow-2xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-slate-900">
