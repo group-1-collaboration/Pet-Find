@@ -107,7 +107,7 @@ const newUser ={
 
             <input
               type="text"
-              name="text"
+              name="fulName"
               value={formData.fullName}
               onChange={handleChange}
               placeholder="full name"
@@ -137,7 +137,7 @@ const newUser ={
 
             <input
               type="tel"
-              name="tel"
+              name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="+254 *** *** ***"
