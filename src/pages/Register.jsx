@@ -25,7 +25,7 @@ const handleChange = (e) => {
     ...formData,
     [e.target.name]: e.target.value,
   });
-};
+
 // handle registration
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +36,7 @@ const handleSubmit = (e) => {
     setError("Passwords do not match.");
     return;
   }
+  
   //get registered users
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -181,6 +182,7 @@ const newUser ={
       </div>
     </section>
   );
-}
+};
+};
 
 export default Register;
