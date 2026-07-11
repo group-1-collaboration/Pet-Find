@@ -1,4 +1,3 @@
-import React from "react";
 import loginBackground from "@/assets/loginbg.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +24,7 @@ const handleChange = (e) => {
     ...formData,
     [e.target.name]: e.target.value,
   });
-}
+};
 
 // handle registration
 const handleSubmit = (e) => {
@@ -45,11 +44,7 @@ const handleSubmit = (e) => {
   const existingUser = users.find(
     (user) => user.email === formData.email
   );
-   if (existingUser) {
-    setError("An account with this email already exists.");
-    return;
-  }
-
+ 
 //create new user object
 const newUser ={
     id: Date.now(),
@@ -59,11 +54,18 @@ const newUser ={
     password: formData.password,
     role: "user", 
 }
+   if (newUser) {
+    setSuccess("account created successfully!");
+    return;}
+
  // Add the new user
   users.push(newUser);
 
   // Save all users
   localStorage.setItem("users", JSON.stringify(users));
+  
+ //success message
+    setError("An account with this email already exists.");  
 
   // Create a login token
   const token = Date.now().toString();
@@ -107,7 +109,7 @@ const newUser ={
 
             <input
               type="text"
-              name="fulName"
+              name="fullName"
               value={formData.fullName}
               onChange={handleChange}
               placeholder="full name"
