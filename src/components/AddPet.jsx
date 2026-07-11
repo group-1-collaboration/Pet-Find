@@ -47,7 +47,7 @@ export default function AddPet({ onAddPet }) {
               value={form.name}
               onChange={handleChange}
               placeholder="e.g. Luna"
-              className="input p-2 border-2 rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
+              className="input p-2 border rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
             />
           </Field>
           
@@ -56,7 +56,7 @@ export default function AddPet({ onAddPet }) {
               name="species" 
               value={form.species} 
               onChange={handleChange} 
-              className="input p-2 border-2 rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
+              className="input p-2 border rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
             >
               <option>Dog</option>
               <option>Cat</option>
@@ -72,7 +72,7 @@ export default function AddPet({ onAddPet }) {
               value={form.breed}
               onChange={handleChange}
               placeholder="e.g. Labrador mix"
-              className="input p-2 border-2 rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
+              className="input p-2 border rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
             />
           </Field>
           
@@ -82,7 +82,7 @@ export default function AddPet({ onAddPet }) {
               value={form.age}
               onChange={handleChange}
               placeholder="e.g. 1.5 yrs"
-              className="input p-2 border-2 rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
+              className="input p-2 border rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
             />
           </Field>
           
@@ -91,7 +91,7 @@ export default function AddPet({ onAddPet }) {
               name="gender" 
               value={form.gender} 
               onChange={handleChange} 
-              className="input p-2 border-2 rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
+              className="input p-2 border rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
             >
               <option>Female</option>
               <option>Male</option>
@@ -105,7 +105,7 @@ export default function AddPet({ onAddPet }) {
               value={form.image}
               onChange={handleChange}
               placeholder="https://…"
-              className="input p-2 border-2 rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
+              className="input p-2 border rounded-lg text-sm w-full focus:outline-none focus:border-[#da760c]"
             />
           </Field>
         </div>
@@ -117,7 +117,7 @@ export default function AddPet({ onAddPet }) {
             onChange={handleChange}
             rows={3}
             placeholder="Personality, needs, good with kids/other pets…"
-            className="input resize-none border-2 p-3 sm:p-4 rounded-xl w-full focus:outline-none focus:border-[#da760c]"
+            className="input resize-none border p-3 sm:p-4 rounded-xl w-full focus:outline-none focus:border-[#da760c]"
           />
         </Field>
 
