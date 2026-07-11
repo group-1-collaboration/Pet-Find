@@ -58,9 +58,9 @@ function Navbar() {
      </DialogTrigger>
 
      {/* pop up content */}
-     <DialogContent>
+     <DialogContent className="text-white">
       <DialogHeader>
-        <DialogTitle>
+        <DialogTitle className="text-white">
           My Favourite pets
         </DialogTitle>
       </DialogHeader>
