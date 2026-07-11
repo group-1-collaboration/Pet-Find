@@ -7,6 +7,10 @@ import AboutUs from './components/AboutUs'
 import Footer from './components/footer'
 import  Login  from './pages/Login'
 import Register from './pages/Register'
+<<<<<<< HEAD
+=======
+import { seedAdmin } from './utils/seedAdmin'
+>>>>>>> 8073290ba8e5434b2a6c29f085dfbc3ab6f69f4a
 import Dashboard from './pages/Dashboard'
 
 function Home(){
@@ -22,6 +26,9 @@ function Home(){
 }
 
 function App() {
+  useEffect(() => {
+    seedAdmin();
+  }, []);
   return (
       <Routes>
         <Route path="/" element={<Home/>} />
