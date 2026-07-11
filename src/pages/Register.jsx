@@ -67,9 +67,6 @@ const newUser ={
   // Create a login token
   const token = Date.now().toString();
 
-  // Log the user in using AuthContext
-  register(token, newUser);
-
   // Go to the home page
   navigate("/login");
 
@@ -95,7 +92,7 @@ const newUser ={
           </p>
         </div>
 
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="mb-2 block text-sm font-medium">
               Full Name
@@ -103,6 +100,9 @@ const newUser ={
 
             <input
               type="text"
+              name="text"
+              value={formData.fullName}
+              onChange={handleChange}
               placeholder="full name"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -115,6 +115,9 @@ const newUser ={
 
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="@gmail.com"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -127,6 +130,9 @@ const newUser ={
 
             <input
               type="tel"
+              name="tel"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="+254 *** *** ***"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -139,6 +145,9 @@ const newUser ={
 
             <input
               type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               placeholder="Create a password"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -151,6 +160,9 @@ const newUser ={
 
             <input
               type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
               placeholder="Confirm your password"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
