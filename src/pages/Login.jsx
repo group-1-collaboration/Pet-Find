@@ -2,6 +2,7 @@ import React,{ useState }  from 'react'
 import loginBackground from "@/assets/loginbg.png"
 import {useNavigate } from 'react-router-dom';
 import { useAuth } from "@/context/AuthContext";
+import Dashboard from './Dashboard';
 
 
 const Login = () => { //create the react component
@@ -56,7 +57,7 @@ const Login = () => { //create the react component
  login(token, user);
  //redirect based on role
  if(user.role === "admin"){
-  navigate("/admin");
+  navigate("/dashboard");
  }else{ 
   navigate("/");
  }
