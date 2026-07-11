@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { PawPrint, LayoutGrid, PlusCircle, ClipboardList, Home } from "lucide-react";
-import AddPet from "../component/AddPet";
-import EditPet from "../component/EditPet";
-import ManagePets from "../component/ManagePets";
-import ManageRequests from "../component/ManageRequests";
+import AddPet from "../components/AddPet";
+import EditPet from "../components/EditPet";
+import ManagePets from "../components/ManagePets";
+import ManageRequests from "../components/ManageRequests";
 
 const initialPets = [
   {
