@@ -142,7 +142,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="bg-bla min-h-screen w-full" style={{ fontFamily: "Inter, sans-serif" }}>
+    <div className=" min-h-screen bg-[#e4dad0] bg-[url('/path-to-your/image.png')] bg-cover bg-center bg-no-repeat w-full" style={{ fontFamily: "Inter, sans-serif" }}>
       <div className="flex flex-col md:flex-row">
         {/* Sidebar */}
         <aside className="md:w-64 shrink-0 border-b md:border-b-0 md:border-r border-[#2B4038] p-5">
@@ -216,7 +216,7 @@ export default function Dashboard() {
 
 function StatCard({ label, value, accent }) {
   return (
-    <div className="border border-[#2B4038] rounded-xl px-5 py-4 flex-1 min-w-[140px]">
+    <div className="bg-white border border-[#2B4038] rounded-xl px-5 py-4 flex-1 min-w-[140px]">
       <p className="text-xs uppercase tracking-wide  mb-1 font-bold">{label}</p>
       <p
         className="text-3xl"
@@ -248,7 +248,7 @@ function Overview({ stats, pets, requests }) {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="border border-[#2B4038] rounded-xl p-5">
+        <div className="bg-white border border-[#2B4038] rounded-xl p-5">
           <h2 className="text-sm uppercase tracking-wide mb-3 font-extrabold">Recently added pets</h2>
           <ul className="space-y-2">
             {recentPets.map((p) => (
@@ -261,7 +261,7 @@ function Overview({ stats, pets, requests }) {
           </ul>
         </div>
 
-        <div className="border border-#2B4038 rounded-xl p-5">
+        <div className="bg-white border border-#2B4038 rounded-xl p-5">
           <h2 className="text-sm uppercase tracking-wide mb-3 font-extrabold">Recent adoption requests</h2>
           <ul className="space-y-2">
             {recentRequests.map((r) => (
