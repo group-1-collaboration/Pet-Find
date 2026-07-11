@@ -31,6 +31,17 @@ const handleSubmit = (e) => {
     setError("Passwords do not match.");
     return;
   }
+  //get registered users
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+
+  //check if email already exists
+  const existingUser = users.find(
+    (user) => user.email === formData.email
+  );
+   if (existingUser) {
+    setError("An account with this email already exists.");
+    return;
+  }
 }
 
 const [error, setError] = useState("");
