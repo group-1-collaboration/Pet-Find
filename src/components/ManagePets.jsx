@@ -34,7 +34,7 @@ export default function ManagePets({ pets, onEdit, onDelete, onMarkAdopted }) {
       <p className="mb-6 text-sm">Edit details, mark pets adopted, or remove a listing.</p>
 
       <div className="flex flex-wrap gap-3 mb-5">
-        <div className="flex items-center gap-2 border border-[#2B4038] rounded-lg px-3 py-2 flex-1 min-w-[200px]">
+        <div className="bg-white shadow-sm flex items-center gap-2 border border-[#2B4038] rounded-lg px-3 py-2 flex-1 min-w-[200px]">
           <Search className="w-4 h-4 text-[#9FB3AC]" />
           <input
             value={query}
@@ -46,7 +46,7 @@ export default function ManagePets({ pets, onEdit, onDelete, onMarkAdopted }) {
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="border border-[#2B4038] rounded-lg px-3 py-2 text-sm outline-none"
+          className="bg-white shadow-sm border border-[#2B4038] rounded-lg px-3 py-2 text-sm outline-none"
         >
           <option value="all">All statuses</option>
           <option value="available">Available</option>
@@ -57,7 +57,7 @@ export default function ManagePets({ pets, onEdit, onDelete, onMarkAdopted }) {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((pet) => (
-          <div key={pet.id} className="border rounded-xl p-4 flex flex-col gap-3 shadow-lg">
+          <div key={pet.id} className="bg-white shadow-sm border rounded-xl p-4 flex flex-col gap-3 shadow-lg">
             <div className="flex items-start justify-between">
               <div>
                 <p className="font-extrabold">{pet.name}</p>
