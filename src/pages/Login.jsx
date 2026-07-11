@@ -1,20 +1,66 @@
-import React from 'react'
+import React,{ useState }  from 'react'
 import loginBackground from "@/assets/loginbg.png"
+import {useNavigate } from 'react-router-dom';
+import { useAuth } from "@/context/AuthContext";
 
-export const Login = () => { //create the react component
+
+const Login = () => { //create the react component
+  
+  const { login } = useAuth();
+  const navigate = useNavigate(); 
+
+// Stores the form inputs
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  // Stores any login error
+  const [error, setError] = useState("");
+
+  // Updates formData whenever the user types
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Runs when the Login button is clicked
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setError("");
+
+ //get all registered users
+
   const users = JSON.parse(localStorage.getItem("users")) || []; //retrieve the logged in users
+
   //find matching user
   const user = users.find(
     (u) => 
-      u.email === FormData.email &&
-      u.password === FormData.password
+      u.email === formData.email &&
+      u.password === formData.password
   );
-  //check if login failed
-  
+
+//check if login failed
  if (!user) {
-  searchResultErrorSchema("Invalid email or password")
+  setError("Invalid email or password");
   return;
- } 
+ }
+
+ //create token
+ const token = Date.now().toString();
+
+ //call  AuthContext
+ login(token, user);
+ //redirect based on role
+ if(user.role === "admin"){
+  navigate("/admin");
+ }else{ 
+  navigate("/");
+ }
+};
 
   return (
     <section className="min-h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20" style={{
@@ -36,7 +82,13 @@ export const Login = () => { //create the react component
       </p>
     </div>
 
-    <form className="space-y-5">
+    {error && (
+    <p className="mb-4 rounded-lg bg-red-100 p-3 text-center text-red-600">
+    {error}
+     </p>
+        )}
+
+    <form className="space-y-5" onSubmit={handleSubmit}>
 
       <div>
         <label className="block mb-2 text-sm font-medium">
@@ -45,6 +97,9 @@ export const Login = () => { //create the react component
 
         <input
           type="email"
+          name='email'
+          value={formData.email}
+          onChange={handleChange}
           placeholder="you@example.com"
           className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
         />
@@ -57,7 +112,10 @@ export const Login = () => { //create the react component
 
         <input
           type="password"
+          name='password'
           placeholder="••••••••"
+           value={formData.password}
+           onChange={handleChange}
           className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
         />
       </div>
@@ -87,4 +145,6 @@ export const Login = () => { //create the react component
     </section>
 
   )
-}
+};
+
+export default Login;
