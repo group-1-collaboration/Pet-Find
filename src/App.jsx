@@ -12,19 +12,8 @@ import { seedAdmin } from './utils/seedAdmin'
 import Dashboard from './pages/Dashboard'
 import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
-
-
-// function App() {
-//   return (
-//     <>
-//     <Router>
-//       <Navbar /> 
-//       <Header />
-//       <Routes>
-//       </Routes>
-//     </Router>
-//     </>
-//   )}
+import Categories from './components/Categories'
+import CategoryPets from './components/CategoryPets'
 
 function Home(){
   return(
@@ -32,7 +21,8 @@ function Home(){
      <Navbar />
       <Header />
       <AboutUs />
-      <PetList/>
+      <Categories/>
+      {/* <PetList/> */}
       <Footer />
     </>
   )
@@ -51,6 +41,8 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path='/pets/:id' element={<PetDetails/>}/>
+        <Route path='/pets' element={<PetList/>}/>
+        <Route path='/category/:categoryName' element={<CategoryPets/>}/>
 
         
         <Route path="/dashboard" 
