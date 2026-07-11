@@ -7,6 +7,8 @@ import AboutUs from './components/AboutUs'
 import Footer from './components/footer'
 import  Login  from './pages/Login'
 import Register from './pages/Register'
+import { seedAdmin } from './utils/seedAdmin'
+import Dashboard from './pages/Dashboard'
 
 function Home(){
   return(
@@ -21,11 +23,15 @@ function Home(){
 }
 
 function App() {
+  useEffect(() => {
+    seedAdmin();
+  }, []);
   return (
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
   )
 }

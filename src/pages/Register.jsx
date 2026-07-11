@@ -1,4 +1,3 @@
-import React from "react";
 import loginBackground from "@/assets/loginbg.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ function Register() {
 const { register } = useAuth();
 const navigate = useNavigate();
 const [error, setError] = useState("");
+const [success,setSuccess] = useState("");
 
 
 const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const handleChange = (e) => {
     ...formData,
     [e.target.name]: e.target.value,
   });
-}
+};
 
 // handle registration
 const handleSubmit = (e) => {
@@ -45,11 +45,7 @@ const handleSubmit = (e) => {
   const existingUser = users.find(
     (user) => user.email === formData.email
   );
-   if (existingUser) {
-    setError("An account with this email already exists.");
-    return;
-  }
-
+ 
 //create new user object
 const newUser ={
     id: Date.now(),
@@ -59,18 +55,24 @@ const newUser ={
     password: formData.password,
     role: "user", 
 }
+    
  // Add the new user
   users.push(newUser);
 
   // Save all users
   localStorage.setItem("users", JSON.stringify(users));
 
+ //success message
+ setSuccess("account created successfully!");
+
   // Create a login token
   const token = Date.now().toString();
 
   // Go to the home page
-  navigate("/login");
-
+  setTimeout(() => {
+    navigate("/login");
+  }, 1000);
+  
 };
 
 
@@ -80,11 +82,18 @@ const newUser ={
       style={{
         backgroundImage: `url(${loginBackground})`,
       }}>
-
+       <div>
       {error && (
         <p className="mb-4 rounded-lg bg-red-100 p-3 text-center text-red-600">
            {error}
          </p>
+       )}
+       </div>
+
+       {success && (
+        <p className="mb-4 rounded-lg bg-green-100 p-3 text-center text-green-700">
+          {success}
+       </p>
        )}
 
       <div className="w-full max-w-md rounded-3xl border border-white/30 bg-white/20 p-8 backdrop-blur-xl shadow-2xl">
@@ -107,7 +116,7 @@ const newUser ={
 
             <input
               type="text"
-              name="text"
+              name="fullName"
               value={formData.fullName}
               onChange={handleChange}
               placeholder="full name"
@@ -137,7 +146,7 @@ const newUser ={
 
             <input
               type="tel"
-              name="tel"
+              name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="+254 *** *** ***"
