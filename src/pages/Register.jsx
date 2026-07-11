@@ -2,6 +2,21 @@ import React from "react";
 import loginBackground from "@/assets/loginbg.png";
 
 function Register() {
+    
+//set variables
+const { register } = useAuth();
+const navigate = useNavigate();
+
+const [formData, setFormData] = useState({
+  fullName: "",
+  email: "",
+  phone: "",
+  password: "",
+  confirmPassword: "",
+});
+
+const [error, setError] = useState("");
+
   return (
     <section
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-6"
