@@ -21,6 +21,17 @@ const handleChange = (e) => {
     [e.target.name]: e.target.value,
   });
 };
+// handle registration
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setError("");
+    //check matching passwords
+     if (formData.password !== formData.confirmPassword) {
+    setError("Passwords do not match.");
+    return;
+  }
+}
 
 const [error, setError] = useState("");
 
