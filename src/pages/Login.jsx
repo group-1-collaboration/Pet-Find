@@ -2,7 +2,7 @@ import React,{ useState }  from 'react'
 import loginBackground from "@/assets/loginbg.png"
 import {useNavigate } from 'react-router-dom';
 import { useAuth } from "@/context/AuthContext";
-import Dashboard from './Dashboard';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => { //create the react component
@@ -136,9 +136,9 @@ const Login = () => { //create the react component
 
     <p className="mt-8 text-center text-sm text-slate-700">
       Don't have an account?
-      <a href='#register' className="ml-1 cursor-pointer font-semibold text-orange-500 hover:text-orange-600">
+      <Link to="/register" className="ml-1 cursor-pointer font-semibold text-orange-500 hover:text-orange-600">
         Sign Up
-      </a>
+      </Link>
     </p>
 
   </div>        
