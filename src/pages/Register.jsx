@@ -55,10 +55,7 @@ const newUser ={
     password: formData.password,
     role: "user", 
 }
-   if (newUser) {
-    setSuccess("account created successfully!");
-    return;}
-
+    
  // Add the new user
   users.push(newUser);
 
@@ -66,7 +63,7 @@ const newUser ={
   localStorage.setItem("users", JSON.stringify(users));
 
  //success message
-    setError("An account with this email already exists.");  
+ setSuccess("account created successfully!");
 
   // Create a login token
   const token = Date.now().toString();
@@ -76,7 +73,6 @@ const newUser ={
     navigate("/login");
   }, 1000);
   
-
 };
 
 
@@ -86,11 +82,18 @@ const newUser ={
       style={{
         backgroundImage: `url(${loginBackground})`,
       }}>
-
+       <div>
       {error && (
         <p className="mb-4 rounded-lg bg-red-100 p-3 text-center text-red-600">
            {error}
          </p>
+       )}
+       </div>
+
+       {success && (
+        <p className="mb-4 rounded-lg bg-green-100 p-3 text-center text-green-700">
+          {success}
+       </p>
        )}
 
       <div className="w-full max-w-md rounded-3xl border border-white/30 bg-white/20 p-8 backdrop-blur-xl shadow-2xl">
