@@ -1,14 +1,92 @@
 import React from "react";
 import loginBackground from "@/assets/loginbg.png";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 function Register() {
+
+//set variables
+const { register } = useAuth();
+const navigate = useNavigate();
+const [error, setError] = useState("");
+
+
+const [formData, setFormData] = useState({
+  fullName: "",
+  email: "",
+  phone: "",
+  password: "",
+  confirmPassword: "",
+});
+//handle input changes
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+}
+
+// handle registration
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setError("");
+    //check matching passwords
+     if (formData.password !== formData.confirmPassword) {
+    setError("Passwords do not match.");
+    return;
+  }
+  
+  //get registered users
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+
+  //check if email already exists
+  const existingUser = users.find(
+    (user) => user.email === formData.email
+  );
+   if (existingUser) {
+    setError("An account with this email already exists.");
+    return;
+  }
+
+//create new user object
+const newUser ={
+    id: Date.now(),
+    fullName: formData.fullName,
+    email: formData.email,
+    phone: formData.phone,
+    password: formData.password,
+    role: "user", 
+}
+ // Add the new user
+  users.push(newUser);
+
+  // Save all users
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // Create a login token
+  const token = Date.now().toString();
+
+  // Go to the home page
+  navigate("/login");
+
+};
+
+
   return (
     <section
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-6"
       style={{
         backgroundImage: `url(${loginBackground})`,
-      }}
-    >
+      }}>
+
+      {error && (
+        <p className="mb-4 rounded-lg bg-red-100 p-3 text-center text-red-600">
+           {error}
+         </p>
+       )}
+
       <div className="w-full max-w-md rounded-3xl border border-white/30 bg-white/20 p-8 backdrop-blur-xl shadow-2xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-slate-900">
@@ -21,7 +99,7 @@ function Register() {
           </p>
         </div>
 
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="mb-2 block text-sm font-medium">
               Full Name
@@ -29,6 +107,9 @@ function Register() {
 
             <input
               type="text"
+              name="text"
+              value={formData.fullName}
+              onChange={handleChange}
               placeholder="full name"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -41,6 +122,9 @@ function Register() {
 
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="@gmail.com"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -53,6 +137,9 @@ function Register() {
 
             <input
               type="tel"
+              name="tel"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="+254 *** *** ***"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -65,6 +152,9 @@ function Register() {
 
             <input
               type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               placeholder="Create a password"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -77,6 +167,9 @@ function Register() {
 
             <input
               type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
               placeholder="Confirm your password"
               className="w-full rounded-xl border border-white/40 bg-white/30 px-4 py-3 outline-none backdrop-blur-md placeholder:text-slate-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 transition"
             />
@@ -108,6 +201,7 @@ function Register() {
       </div>
     </section>
   );
-}
+};
+
 
 export default Register;
