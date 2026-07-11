@@ -1,14 +1,29 @@
 import React from 'react'
 import loginBackground from "@/assets/loginbg.png"
 
-function Login() {
+export const Login = () => { //create the react component
+  const users = JSON.parse(localStorage.getItem("users")) || []; //retrieve the logged in users
+  //find matching user
+  const user = users.find(
+    (u) => 
+      u.email === FormData.email &&
+      u.password === FormData.password
+  );
+  //check if login failed
+  
+ if (!user) {
+  searchResultErrorSchema("Invalid email or password")
+  return;
+ } 
+
   return (
     <section className="min-h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20" style={{
             backgroundImage:`url(${loginBackground})`,
             backgroundSize:"cover",
             backgroundPosition:"center",
             height: "500px",
-            }}>
+     }}>
+
 <div className="w-full max-w-md rounded-3xl border border-white/30 bg-white/10 backdrop-blur-xl shadow-2xl p-8 text-slate-800">
 
     <div className="mb-8 text-center">
@@ -69,9 +84,7 @@ function Login() {
 
   </div>        
 
-
     </section>
+
   )
 }
-
-export default Login
