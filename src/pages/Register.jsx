@@ -25,6 +25,7 @@ const handleChange = (e) => {
     ...formData,
     [e.target.name]: e.target.value,
   });
+}
 
 // handle registration
 const handleSubmit = (e) => {
@@ -201,6 +202,6 @@ const newUser ={
     </section>
   );
 };
-};
+
 
 export default Register;
