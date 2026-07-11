@@ -52,7 +52,21 @@ const newUser ={
     password: formData.password,
     role: "user", 
 }
+ // Add the new user
+  users.push(newUser);
 
+  // Save all users
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // Create a login token
+  const token = Date.now().toString();
+
+  // Log the user in using AuthContext
+  register(token, newUser);
+
+  // Go to the home page
+  navigate("/login");
+};
 
 }
 
