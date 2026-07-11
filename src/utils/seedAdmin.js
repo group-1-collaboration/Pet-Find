@@ -8,10 +8,10 @@ export const seedAdmin = () => {
   if (!adminExists) {
     users.push({
       id: 1,
-      fullName: "System Administrator",
-      email: "admin@petfind.com",
-      phone: "+254700000000",
-      password: "admin123",
+      fullName: "group1",
+      email: "group1petfind@gmail.com",
+      phone: "+254777000777",
+      password: "collaboration",
       role: "admin",
     });
 
