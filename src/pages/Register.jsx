@@ -42,6 +42,18 @@ const handleSubmit = (e) => {
     setError("An account with this email already exists.");
     return;
   }
+
+//create new user object
+const newUser ={
+    id: Date.now(),
+    fullName: formData.fullName,
+    email: formData.email,
+    phone: formData.phone,
+    password: formData.password,
+    role: "user", 
+}
+
+
 }
 
 const [error, setError] = useState("");
