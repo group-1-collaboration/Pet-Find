@@ -4,21 +4,6 @@ import PetList from './components/PetList'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
 import PetDetails from './components/PetDetails'
-
-function App() {
-  return (
-    <>
-    <Router>
-      <Navbar /> 
-      <Header />
-      <Routes>
-        <Route path='/' element={<PetList/>}/>
-        <Route path='/pets/:id' element={<PetDetails/>}/>
-      </Routes>
-    </Router>
-     
-      
-    </>
 import AboutUs from './components/AboutUs'
 import Footer from './components/footer'
 import  Login  from './pages/Login'
@@ -27,6 +12,19 @@ import { seedAdmin } from './utils/seedAdmin'
 import Dashboard from './pages/Dashboard'
 import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
+
+
+// function App() {
+//   return (
+//     <>
+//     <Router>
+//       <Navbar /> 
+//       <Header />
+//       <Routes>
+//       </Routes>
+//     </Router>
+//     </>
+//   )}
 
 function Home(){
   return(
@@ -52,6 +50,8 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path='/pets/:id' element={<PetDetails/>}/>
+
         
         <Route path="/dashboard" 
         element={
