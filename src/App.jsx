@@ -5,7 +5,8 @@ import Navbar from './components/Navbar'
 import Header from './components/Header'
 import AboutUs from './components/AboutUs'
 import Footer from './components/footer'
-import Login from './pages/Login'
+import  Login  from './pages/Login'
+import Register from './pages/Register'
 
 function Home(){
   return(
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
       </Routes>
   )
 }
