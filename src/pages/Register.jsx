@@ -9,6 +9,7 @@ function Register() {
 const { register } = useAuth();
 const navigate = useNavigate();
 const [error, setError] = useState("");
+const [success,setSuccess] = useState("");
 
 
 const [formData, setFormData] = useState({
@@ -63,7 +64,7 @@ const newUser ={
 
   // Save all users
   localStorage.setItem("users", JSON.stringify(users));
-  
+
  //success message
     setError("An account with this email already exists.");  
 
@@ -71,7 +72,10 @@ const newUser ={
   const token = Date.now().toString();
 
   // Go to the home page
-  navigate("/login");
+  setTimeout(() => {
+    navigate("/login");
+  }, 1000);
+  
 
 };
 
