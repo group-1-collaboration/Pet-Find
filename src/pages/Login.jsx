@@ -62,9 +62,9 @@ function Login() {
 
     <p className="mt-8 text-center text-sm text-slate-700">
       Don't have an account?
-      <span className="ml-1 cursor-pointer font-semibold text-orange-500 hover:text-orange-600">
+      <a href='#register' className="ml-1 cursor-pointer font-semibold text-orange-500 hover:text-orange-600">
         Sign Up
-      </span>
+      </a>
     </p>
 
   </div>        
