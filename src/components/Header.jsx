@@ -20,13 +20,13 @@ function Header() {
           {!isAuthenticated ? (
             <>
             <div className='p-3'>
-          <h1 className='text-7xl text-white font-bold'>Everyone needs a </h1>
+          <h1 className='text-7xl text-white dark:text-black font-bold'>Everyone needs a </h1>
           <span className='text-7xl text-orange-500 font-bold'>Home.</span>
           </div>
 
          <div className='p-3'>
-          <h3 className='text-2xl text-white'>Open your heart. Change a life. <p>Find your perfect companion today.</p></h3>
-          <p className='text-lg text-orange-500'>Register, to adopt a pet or <a href="#login" className='text-orange-300 '> sign in </a> to your account. </p>
+          <h3 className='text-2xl text-white dark:text-black'>Open your heart. Change a life. <p>Find your perfect companion today.</p></h3>
+          <p className='text-lg text-orange-500 dark:text-black/80'>Register, to adopt a pet or <a href="#login" className='text-orange-300 '> sign in </a> to your account. </p>
          </div>
 
         <div className=' flex '>
@@ -50,11 +50,11 @@ function Header() {
               <>
               <div className='p-3'>
 
-              <h1 className="font-bold text-7xl text-white font-bold">
+              <h1 className="font-bold text-7xl text-white dark:text-black font-bold">
                   Welcome back, <p><span className='text-7xl text-orange-500 font-bold'>{user?.fullName}!</span></p>
                 </h1>
 
-                  <h2 className="mt-4 text-lg text-white ">
+                  <h2 className="mt-4 text-lg text-white dark:text-black ">
                         Continue exploring pets, manage your favorites,<p> or book a visit with your future companion.</p>
                     </h2>
 
