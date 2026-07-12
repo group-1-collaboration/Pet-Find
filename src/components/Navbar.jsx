@@ -104,7 +104,7 @@ function Navbar() {
 
 {isAuthenticated && user?.role === "admin" && (
   <Link to="/dashboard">
-    <Button className="bg-slate-700 text-white hover:bg-slate-600">
+    <Button className="bg-orange-700 text-white rounded hover:bg-orange-600">
       Admin Dashboard
     </Button>
   </Link>
