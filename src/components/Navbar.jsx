@@ -7,13 +7,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useAuth } from "@/context/AuthContext"
 import { ThemeContext } from "./context/ThemeContext"
 
+
 function Navbar() {
   const {favourites} = useContext(FavouritesContext)
   const [isFavouritesOpen, setisFavouritesOpen] = useState(false)
   const favouriteCount = favourites?.length || 0;
 
    const { theme, toggleTheme } = useContext(ThemeContext);
-   const {isAuthenticated } = useAuth();
+   const {user,isAuthenticated ,logout} = useAuth();
 
   return (
 <nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
@@ -100,15 +101,35 @@ function Navbar() {
         <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
           {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
-          <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">             
 
-            <Link to={'/login'}>
+
+<div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">             
+{isAuthenticated ? (
+  <>
+  <div className="flex items-center gap-4">
+    <span className="font-medium text-slate-800 dark:text-white">
+      👤 {user.fullName}
+    </span>
+
+    <Button
+      onClick={logout}
+      className="rounded-md bg-orange-500 px-3 py-2 text-white hover:bg-orange-600"
+    >
+      Logout
+    </Button>
+    </div >
+    </>
+ ) : (
+<>
+<Link to={'/login'}>
              <Button className="bg-orange-400 text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
               Login
              </Button>
             </Link>
-            
-          </div>
+</>        
+)}
+
+</div>
 </nav>
  
 )
