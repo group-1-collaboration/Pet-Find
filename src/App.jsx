@@ -16,6 +16,7 @@ import Categories from './components/Categories'
 import CategoryPets from './components/CategoryPets'
 import BookingForm from './pages/BookingForm'
 import AdoptionForm from './pages/AdaptationForm'
+import MainLayout from './layouts/MainLayout'
 
 function Home(){
   return(
@@ -24,7 +25,6 @@ function Home(){
       <Header />
       <AboutUs />
       <Categories/>
-      {/* <PetList/> */}
       <Footer />
     </>
   )
@@ -39,15 +39,19 @@ function App() {
 
   return (
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+
+        <Route element={<MainLayout/>}>
+        
         <Route path='/pets/:id' element={<PetDetails/>}/>
         <Route path='/pets' element={<PetList/>}/>
         <Route path='/category/:categoryName' element={<CategoryPets/>}/>
         <Route path="/booking/:id" element={<BookingForm />} />
         <Route path="/adopt/:id" element={<AdoptionForm />} />
+        </Route>
 
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
         
         <Route path="/dashboard" 
         element={
@@ -57,7 +61,7 @@ function App() {
         }
         />
       </Routes>
-  )
+  );
 }
 
 export default App;
