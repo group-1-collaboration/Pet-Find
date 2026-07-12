@@ -168,7 +168,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-2">
               <PawPrint className="w-6 h-6 text-[#da760c]" />
               <span
-                className="text-xl tracking-tight"
+                className="text-2xl tracking-tight"
                 style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
               >
                 Shelter Admin
