@@ -14,6 +14,7 @@ import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
 import Categories from './components/Categories'
 import CategoryPets from './components/CategoryPets'
+import BookingForm from './pages/BookingForm'
 
 function Home(){
   return(
@@ -43,6 +44,7 @@ function App() {
         <Route path='/pets/:id' element={<PetDetails/>}/>
         <Route path='/pets' element={<PetList/>}/>
         <Route path='/category/:categoryName' element={<CategoryPets/>}/>
+        <Route path="/booking/:id" element={<BookingForm />} />
 
         
         <Route path="/dashboard" 
