@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import PetCard from './PetCard';
 import SearchBar from './SearchBar';
+import Categories from './Categories';
 
 //JSON data
 import petData from "../data/pets.json";
@@ -11,11 +12,22 @@ function PetList() {
     const[pets] = useState(petData);
     const [search, setSearch] = useState("");
     // const [category, setCategory] = useState("All")
-
     const filteredPets = pets.filter((pet) => pet.Breed.toLowerCase().includes(search.toLowerCase()))
+
+    //stores the category when user clicked
+    const [selectedCategory, setSelectedCategory] = useState("all");
+
+    //filter pets
+    const CategoryPets = selectedCategory === "all" ?petData: petData.filter((pet)=> pet.category.toLowerCase()===selectedCategory.toLowerCase())
   return (
-    <div>
-        {/* Display the search bar */}
+    <>
+      <Categories setSelectedCategory={setSelectedCategory}/>
+
+      <section className='max-w-6xl mx-auto px-6 py-10'>
+        <h2 className='text-3xp font-bold mb-8 text-center'>
+          {selectedCategory === "all" ?"All Pets": `${selectedCategory}s`}
+        </h2>
+         {/* Display the search bar */}
         <SearchBar 
         search={search}
         setSearch={setSearch}
@@ -30,7 +42,9 @@ function PetList() {
       ))}
 
     </div>
-    </div>
+      </section>
+       
+    </>
     
   )
 }
