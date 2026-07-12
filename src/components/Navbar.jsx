@@ -13,9 +13,10 @@ function Navbar() {
   const favouriteCount = favourites?.length || 0;
 
    const { theme, toggleTheme } = useContext(ThemeContext);
+   const {isAuthenticated } = useAuth();
 
   return (
-<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20  bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
+<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
     {/* Clickable Brand Title navigating back home */}
       <div className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <Link to={'/'}>
@@ -42,13 +43,16 @@ function Navbar() {
     </Link>
     </div>
 
-    {/* favourites pop up */}
+  {/*make the favorites icon conditionally render for a logged in user*/}
+    {/* favorites pop up */}
+   {isAuthenticated && (
     <Dialog 
     open={isFavouritesOpen}
     onOpenChange={setisFavouritesOpen}>
       {/* button that opens pop up */}
      <DialogTrigger asChild>
       <button className="relative p-2">
+
         <Heart className="w-5 h-5"/>
 
         {/* only show the number when favourites exists */}
@@ -89,10 +93,8 @@ function Navbar() {
       )}
      </DialogContent>
     </Dialog>
-        {/* <Link>
-          <Heart />
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-sz">{favourites.length}</span>
-        </Link> */}
+   )}
+    
         
          {/* Theme Controller */}
         <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
