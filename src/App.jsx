@@ -14,12 +14,9 @@ import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
 import Categories from './components/Categories'
 import CategoryPets from './components/CategoryPets'
-<<<<<<<<< Temporary merge branch 1
 import MainLayout from './layouts/MainLayout'
-=========
 import BookingForm from './pages/BookingForm'
 import AdoptionForm from './pages/AdaptationForm'
->>>>>>>>> Temporary merge branch 2
 
 function Home(){
   return(
@@ -48,12 +45,9 @@ function App() {
         <Route path='/pets/:id' element={<PetDetails/>}/>
         <Route path='/pets' element={<PetList/>}/>
         <Route path='/category/:categoryName' element={<CategoryPets/>}/>
-<<<<<<<<< Temporary merge branch 1
         </Route>
-=========
         <Route path="/booking/:id" element={<BookingForm />} />
         <Route path="/adopt/:id" element={<AdoptionForm />} />
->>>>>>>>> Temporary merge branch 2
 
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
