@@ -92,6 +92,12 @@ function Navbar() {
           <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-sz">{favourites.length}</span>
         </Link> */}
           <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">
+             
+              {/* Theme Controller */}
+        <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
+          {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          <span className="sr-only">Toggle theme</span>
+        </Button>
 
             <Link to={'/login'}>
              <Button className="bg-orange-400 text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
