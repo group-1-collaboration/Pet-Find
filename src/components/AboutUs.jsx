@@ -19,10 +19,10 @@ function AboutUs() {
          
         <div>
          <h1 className='text-7xl text-orange-500 font-bold'>About Us</h1>
-          <p className='text-lg'>Every adoption is the beginning of a beautiful story. We work with shelters and rescue organizations to help pets find families where they can feel safe, loved, and cherished. 
+          <p className='text-lg'>Every adoption is the beginning of a beautiful story. We work with shelters and rescue organizations to help pets find families where they can feel safe, loved, and cherished. </p>
           <p className='text-lg'> By making it easy to browse available pets and book a visit, we hope to make finding your newest family member a joyful experience.</p>
           <a className='text-blue-600' href="#learn-more">Learn more <ArrowRight /></a>
-          </p>
+          
         </div>
         
        </div>
