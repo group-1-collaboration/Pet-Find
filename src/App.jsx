@@ -14,6 +14,7 @@ import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
 import Categories from './components/Categories'
 import CategoryPets from './components/CategoryPets'
+import MainLayout from './layouts/MainLayout'
 
 function Home(){
   return(
@@ -22,7 +23,6 @@ function Home(){
       <Header />
       <AboutUs />
       <Categories/>
-      {/* <PetList/> */}
       <Footer />
     </>
   )
@@ -37,13 +37,17 @@ function App() {
 
   return (
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+
+        <Route element={<MainLayout/>}>
+        
         <Route path='/pets/:id' element={<PetDetails/>}/>
         <Route path='/pets' element={<PetList/>}/>
         <Route path='/category/:categoryName' element={<CategoryPets/>}/>
+        </Route>
 
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
         
         <Route path="/dashboard" 
         element={
@@ -53,7 +57,7 @@ function App() {
         }
         />
       </Routes>
-  )
+  );
 }
 
 export default App;

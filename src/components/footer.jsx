@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 function Footer() {
     return(
-    <footer className="bg-zinc-700 border-t border-cyan-500/10 text-slate-300 dark:bg-gray-900 dark:text-white">
+    <footer className="bg-black/80 border-t border-cyan-500/10 text-slate-300 dark:bg-black">
 
     <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
@@ -103,7 +103,7 @@ function Footer() {
     </div>
 
 
-    <div className="border-t border-cyan-500/10 py-6 text-center text-black text-sm">
+    <div className="border-t border-cyan-500/10 py-6 text-center text-orange-500 text-sm">
         © 2026 Pet Find. All rights reserved.
     </div>
 
