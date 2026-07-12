@@ -32,9 +32,12 @@ function Header() {
             </Link> 
           </div>
           <div className='p-3'>
-             <Button className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
+            <Link to={"/pets"}>
+            <Button className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
                Browse pets<Search className='w-5 h-5'/> 
              </Button>
+            </Link>
+             
           </div>
             
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import petData from "../data/pets.json"
 import { useParams } from 'react-router-dom'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 
 function PetDetails() {
     //Get the id from the URL
@@ -14,46 +15,55 @@ function PetDetails() {
     }
 
   return (
-    <div className='max-w-4xl mx-auto p-6'>
-      <img src={pet.image} alt={pet.name} className='w-full object-cover rounded-lg'/>
+    <Card className='max-w-6xl mx-auto mt-10 shadow-lg'>
 
-      <h1 className='text-3xl font-bold mt-6'>
+      <CardContent className="p-3 grid md:grid-cols-2 gap-5 items-start">
+        <img src={pet.image} alt={pet.name} className='w-full object-contain  rounded-lg'/>
+
+     <div>
+      <CardTitle className='text-3xl font-bold mt-6'>
         {pet.name}
-      </h1>
-
-      <p>
-        <strong>Breed:</strong>{pet.Breed}
+      </CardTitle>
+     <div className='space-y-4'>
+       <p className='mt-2'>
+        <strong>Breed:</strong> {pet.Breed}
       </p>
 
       <p>
-        <strong>Gender:</strong>{pet.gender}
+        <strong>Gender:</strong> {pet.gender}
       </p>
 
       <p>
-        <strong>Age:</strong>{pet.age} yes
+        <strong>Age:</strong> {pet.age} years
       </p>
 
-      <p className='mt-4'>
-        <strong>Description</strong>{pet.description}
+      <p className=''>
+        <strong>Description</strong> {pet.description}
       </p>
 
       <p>
-        <strong>Vaccinated:</strong>{""}
+        <strong>Vaccinated:</strong> {""}
         {pet.vaccinated ? "Yes": "No"}
       </p>
 
       <p>
-        <strong>House Trained</strong>{""}
+        <strong>House Trained:</strong> {""}
         {pet.houseTrained ? "Yes" : "No"}
       </p>
       <p>
-        <strong>Health Status:</strong> {pet.healthstatuse}
+        <strong>Health Status:</strong> {pet.healthStatuse}
       </p>
 
-      <button className='mt-6 bg-orange-500 text-white px-6 rounded-lg hover:bg-orange-600'>
+      <button className='mt-6 bg-orange-500 text-white px-6 p-4 rounded-lg hover:bg-orange-600 cursor-pointer'>
         Request Adoption
       </button>
-    </div>
+     </div>
+      
+</div>
+  
+      </CardContent>
+      
+    </Card>
   )
 }
 

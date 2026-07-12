@@ -10,8 +10,9 @@ function PetList() {
     //store the pets in state
     const[pets] = useState(petData);
     const [search, setSearch] = useState("");
+    // const [category, setCategory] = useState("All")
 
-    const filteredPets = pets.filter((pet) => pet.name.toLowerCase().includes(search.toLowerCase()))
+    const filteredPets = pets.filter((pet) => pet.Breed.toLowerCase().includes(search.toLowerCase()))
   return (
     <div>
         {/* Display the search bar */}
