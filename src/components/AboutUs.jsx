@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 
 function AboutUs() {
   return (
-     <section className="max-w-7xl mx-auto px-6 py-16">
+     <section className="max-w-7xl mx-auto px-6 py-16 dark:bg-black/80 backdrop-blur-md bg-white dark:text-white">
 
       <div className="flex flex-col md:flex-row items-center gap-12">  
 
