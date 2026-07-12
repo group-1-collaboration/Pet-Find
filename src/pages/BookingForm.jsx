@@ -65,7 +65,7 @@ const BookingForm = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-black/80 shadow-lg rounded-lg">
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-black/80 shadow-lg rounded-lg text-white">
       <h2 className="text-2xl font-bold mb-6">
         Book a Shelter Visit
       </h2>
