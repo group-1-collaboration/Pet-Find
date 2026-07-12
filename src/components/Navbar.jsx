@@ -15,7 +15,7 @@ function Navbar() {
    const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
+<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
     {/* Clickable Brand Title navigating back home */}
       <div className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <Link to={'/'}>
@@ -97,7 +97,6 @@ function Navbar() {
          {/* Theme Controller */}
         <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
           {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          <span className="sr-only">Toggle theme</span>
         </Button>
           <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">             
 
