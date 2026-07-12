@@ -25,7 +25,7 @@ function Categories() {
     ];
 
   return (
-    <section className='py-12 px-6'>
+    <section className='py-12 px-6 dark:bg-black/80 dark:text-white'>
       <h2 className='text-3xl font-bold text-center mb-8'>
         Categories
       </h2>
