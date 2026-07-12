@@ -15,7 +15,7 @@ function PetDetails() {
     }
 
   return (
-    <Card className='max-w-6xl mx-auto mt-10 shadow-lg'>
+    <Card className='max-w-6xl mx-auto mt-10 shadow-lg dark:bg-black/80 dark:text-white'>
 
       <CardContent className="p-3 grid md:grid-cols-2 gap-5 items-start">
         <img src={pet.image} alt={pet.name} className='w-full object-contain  rounded-lg'/>
