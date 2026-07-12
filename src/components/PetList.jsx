@@ -16,8 +16,6 @@ function PetList() {
     const filteredPets = pets.filter((pet) => pet.Breed.toLowerCase().includes(search.toLowerCase()))
   return (
     <>
-      <Categories setSelectedCategory={setSelectedCategory}/>
-
       <section className='max-w-6xl mx-auto px-6 py-10'>
          {/* Display the search bar */}
         <SearchBar 
