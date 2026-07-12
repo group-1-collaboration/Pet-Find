@@ -10,6 +10,8 @@ import ManageRequests from "../components/ManageRequests";
 // -----------------------------------------------------------------------------
 
 const PETS_JSON_PATH = "/src/data/pets.json";
+const PETS_STORAGE_KEY = "shelter_admin_pets";
+const REQUESTS_STORAGE_KEY = "shelter_admin_requests";
 
 function normalizePet(apiPet) {
   const breed = apiPet.breed || apiPet.Breed || "Unknown";
@@ -59,6 +61,29 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+// -----------------------------------------------------------------------------
+// localStorage helpers
+// -----------------------------------------------------------------------------
+
+function loadFromStorage(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (err) {
+    console.warn(`Could not read ${key} from localStorage:`, err);
+    return null;
+  }
+}
+
+function saveToStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (err) {
+    console.warn(`Could not save ${key} to localStorage:`, err);
+  }
+}
+
 const NAV_ITEMS = [
   { id: "overview", label: "Overview", icon: Home },
   { id: "managePets", label: "Manage pets", icon: LayoutGrid },
@@ -75,10 +100,23 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+  // Tracks whether initial load (from storage or fetch) has finished,
+  // so we don't immediately overwrite storage with an empty array.
+  const [hydrated, setHydrated] = useState(false);
+
   const loadPets = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
+      // Prefer whatever's saved locally so edits survive a refresh.
+      const stored = loadFromStorage(PETS_STORAGE_KEY);
+      if (stored && Array.isArray(stored)) {
+        setPets(stored);
+        setLoading(false);
+        setHydrated(true);
+        return;
+      }
+
       const res = await fetch(PETS_JSON_PATH);
       if (!res.ok)
         throw new Error(
@@ -90,12 +128,29 @@ export default function Dashboard() {
       setError(err.message || "Could not load pets.json.");
     } finally {
       setLoading(false);
+      setHydrated(true);
     }
   }, []);
 
   useEffect(() => {
     loadPets();
+    const storedRequests = loadFromStorage(REQUESTS_STORAGE_KEY);
+    if (storedRequests && Array.isArray(storedRequests)) {
+      setRequests(storedRequests);
+    }
   }, [loadPets]);
+
+  // Persist pets to localStorage any time they change, once we've hydrated.
+  useEffect(() => {
+    if (!hydrated) return;
+    saveToStorage(PETS_STORAGE_KEY, pets);
+  }, [pets, hydrated]);
+
+  // Persist requests to localStorage any time they change, once we've hydrated.
+  useEffect(() => {
+    if (!hydrated) return;
+    saveToStorage(REQUESTS_STORAGE_KEY, requests);
+  }, [requests, hydrated]);
 
   const stats = useMemo(() => {
     const total = pets.length;
@@ -151,6 +206,19 @@ export default function Dashboard() {
     );
   }
 
+  // Wipes local edits and reloads the original pets.json data.
+  function resetToDefaults() {
+    try {
+      localStorage.removeItem(PETS_STORAGE_KEY);
+      localStorage.removeItem(REQUESTS_STORAGE_KEY);
+    } catch (err) {
+      console.warn("Could not clear localStorage:", err);
+    }
+    setRequests([]);
+    setHydrated(false);
+    loadPets().then(() => setHydrated(true));
+  }
+
   function handleNavClick(id) {
     setActiveView(id);
     setMobileNavOpen(false);
@@ -168,7 +236,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-2">
               <PawPrint className="w-6 h-6 text-[#da760c]" />
               <span
-                className="text-xl tracking-tight"
+                className="text-2xl tracking-tight"
                 style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
               >
                 Shelter Admin
