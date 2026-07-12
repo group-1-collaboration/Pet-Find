@@ -14,6 +14,8 @@ import { useEffect } from 'react'
 import { useAuth } from './context/AuthContext'
 import Categories from './components/Categories'
 import CategoryPets from './components/CategoryPets'
+import BookingForm from './pages/BookingForm'
+import AdoptionForm from './pages/AdaptationForm'
 import MainLayout from './layouts/MainLayout'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
@@ -49,6 +51,8 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/privacy" element={<Privacy/>} />
         <Route path="/terms" element={<Terms/>} />
+        <Route path="/booking/:id" element={<BookingForm />} />
+        <Route path="/adopt/:id" element={<AdoptionForm />} />
         </Route>
 
         <Route path="/" element={<Home/>} />

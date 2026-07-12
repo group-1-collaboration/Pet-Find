@@ -1,6 +1,10 @@
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
+import {useNavigate } from "react-router-dom";
 
 function AdoptionForm() {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -39,7 +43,12 @@ function AdoptionForm() {
         }
       />
 
-      <button>Submit</button>
+<Link
+  to={`/booking/${id}`}
+  className="inline-block mt-6 bg-orange-500 text-white px-6 py-4 rounded-lg hover:bg-orange-600"
+>
+  Submit
+</Link>
     </form>
   );
 }

@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import petData from "../data/pets.json"
 import { useParams } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import {useNavigate } from "react-router-dom";
 
 function PetDetails() {
     //Get the id from the URL
     const {id} = useParams()
+          // request adoption navigate
+     const navigate = useNavigate();
 
     //find the selected pet
     const pet = petData.find((pet) => pet.id === Number(id))
@@ -54,7 +57,7 @@ function PetDetails() {
         <strong>Health Status:</strong> {pet.healthStatuse}
       </p>
 
-      <button className='mt-6 bg-orange-500 text-white px-6 p-4 rounded-lg hover:bg-orange-600 cursor-pointer'>
+      <button onClick={() => navigate(`/adopt/${pet.id}`)} className='mt-6 bg-orange-500 text-white px-6 p-4 rounded-lg hover:bg-orange-600 cursor-pointer'>
         Request Adoption
       </button>
      </div>
