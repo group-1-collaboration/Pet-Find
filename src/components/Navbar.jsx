@@ -33,13 +33,13 @@ function Navbar() {
 
      
    <div>
-    <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
+    <Link to={'/about'} className="hover:text-orange-400 transition duration-300">
       About us 
     </Link>
     </div>
 
    <div>
-    <Link to={'/footer'} className="hover:text-orange-400 transition duration-300">
+    <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
       contact
     </Link>
     </div>
