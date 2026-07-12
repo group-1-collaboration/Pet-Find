@@ -34,13 +34,13 @@ const Login = () => { //create the react component
     setError("");
 
  //get all registered users
-
+ 
   const users = JSON.parse(localStorage.getItem("users")) || []; //retrieve the logged in users
 
   //find matching user
   const user = users.find(
     (u) => 
-      u.email === formData.email &&
+      u.email === formData.email && 
       u.password === formData.password
   );
 

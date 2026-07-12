@@ -102,6 +102,13 @@ function Navbar() {
           {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
 
+{isAuthenticated && user?.role === "admin" && (
+  <Link to="/dashboard">
+    <Button className="bg-slate-700 text-white hover:bg-slate-600">
+      Admin Dashboard
+    </Button>
+  </Link>
+)}
 
 <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">             
 {isAuthenticated ? (
