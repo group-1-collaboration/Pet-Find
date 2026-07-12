@@ -15,6 +15,7 @@ import { useAuth } from './context/AuthContext'
 import Categories from './components/Categories'
 import CategoryPets from './components/CategoryPets'
 import BookingForm from './pages/BookingForm'
+import AdoptionForm from './pages/AdaptationForm'
 
 function Home(){
   return(
@@ -45,6 +46,7 @@ function App() {
         <Route path='/pets' element={<PetList/>}/>
         <Route path='/category/:categoryName' element={<CategoryPets/>}/>
         <Route path="/booking/:id" element={<BookingForm />} />
+        <Route path="/adopt/:id" element={<AdoptionForm />} />
 
         
         <Route path="/dashboard" 
