@@ -64,7 +64,8 @@ const Login = () => { //create the react component
 };
 
   return (
-    <section className="min-h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20" style={{
+    <section className="min-h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20"
+     style={{
             backgroundImage:`url(${loginBackground})`,
             backgroundSize:"cover",
             backgroundPosition:"center",
