@@ -15,7 +15,7 @@ function Navbar() {
    const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
+<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20  bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
     {/* Clickable Brand Title navigating back home */}
       <div className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <Link to={'/'}>
