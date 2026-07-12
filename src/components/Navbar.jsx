@@ -43,13 +43,16 @@ function Navbar() {
     </Link>
     </div>
 
-    {/* favourites pop up */}
+  {/*make the favorites icon conditionally render for a logged in user*/}
+    {/* favorites pop up */}
+   {isAuthenticated && (
     <Dialog 
     open={isFavouritesOpen}
     onOpenChange={setisFavouritesOpen}>
       {/* button that opens pop up */}
      <DialogTrigger asChild>
       <button className="relative p-2">
+
         <Heart className="w-5 h-5"/>
 
         {/* only show the number when favourites exists */}
@@ -90,10 +93,8 @@ function Navbar() {
       )}
      </DialogContent>
     </Dialog>
-        {/* <Link>
-          <Heart />
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-sz">{favourites.length}</span>
-        </Link> */}
+   )}
+    
         
          {/* Theme Controller */}
         <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
