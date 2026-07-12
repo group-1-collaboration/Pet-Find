@@ -4,6 +4,8 @@ import AddPet from "../components/AddPet";
 import EditPet from "../components/EditPet";
 import ManagePets from "../components/ManagePets";
 import ManageRequests from "../components/ManageRequests";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 // -----------------------------------------------------------------------------
 // Local JSON data source
@@ -290,6 +292,10 @@ export default function Dashboard() {
                 </button>
               );
             })}
+
+            <Button variant="link" size="default">
+              <Link to={"/"}>Home</Link>
+            </Button>
           </nav>
         </aside>
 
