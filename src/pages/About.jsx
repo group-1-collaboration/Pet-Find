@@ -1,9 +1,9 @@
 import React from "react";
 import { Heart, ShieldCheck, PawPrint, Users } from "lucide-react";
 
-function AboutUs() {
+function About() {
   return (
-    <section className="bg-black/90 py-20 px-6 text-white">
+    <section className="dark:bg-black/90 bg-black/20 py-20 px-6 text-white">
       <div className="mx-auto max-w-7xl">
 
         {/* Heading */}
@@ -14,7 +14,7 @@ function AboutUs() {
 
           <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-orange-500"></div>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-black dark:text-white">
             Pet Find is dedicated to connecting loving families with pets in
             need of safe, permanent homes. We believe every animal deserves
             compassion, care, and the opportunity to become part of a family.
@@ -109,14 +109,13 @@ function AboutUs() {
 
         </div>
 
-        {/* Commitment */}
-        <div className="mt-20 rounded-3xl border border-orange-500/20 bg-gradient-to-r from-orange-500/10 to-black/80 p-10">
+        <div className="mt-20 rounded-3xl border border-orange-500/20 bg-black/80 p-10">
 
           <h3 className="mb-6 text-center text-3xl font-bold text-orange-500">
             Our Commitment
           </h3>
 
-          <p className="mx-auto max-w-5xl text-center text-lg leading-8 text-slate-300">
+          <p className="mx-auto max-w-5xl text-center text-lg text-orange-400">
             Every successful adoption represents a new beginning for both a pet
             and its family. Pet Find is committed to creating meaningful
             connections, supporting responsible adoption practices, and helping
@@ -131,4 +130,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default About;

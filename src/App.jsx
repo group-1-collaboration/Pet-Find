@@ -20,6 +20,7 @@ import MainLayout from './layouts/MainLayout'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import About from './pages/About'
 
 function Home(){
   return(
@@ -51,6 +52,7 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/privacy" element={<Privacy/>} />
         <Route path="/terms" element={<Terms/>} />
+        <Route path="/about" element={<About/>} />
         <Route path="/booking/:id" element={<BookingForm />} />
         <Route path="/adopt/:id" element={<AdoptionForm />} />
         </Route>
