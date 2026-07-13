@@ -54,6 +54,7 @@ const newUser ={
     phone: formData.phone,
     password: formData.password,
     role: "user", 
+    favorites:[],
 }
     
  // Add the new user

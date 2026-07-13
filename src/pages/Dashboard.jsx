@@ -4,12 +4,17 @@ import AddPet from "../components/AddPet";
 import EditPet from "../components/EditPet";
 import ManagePets from "../components/ManagePets";
 import ManageRequests from "../components/ManageRequests";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 // -----------------------------------------------------------------------------
 // Local JSON data source
 // -----------------------------------------------------------------------------
 
 const PETS_JSON_PATH = "/src/data/pets.json";
+const PETS_STORAGE_KEY = "shelter_admin_pets";
+const REQUESTS_STORAGE_KEY = "shelter_admin_requests";
+const PETS_UPDATED_EVENT = "shelterPetsUpdated";
 
 function normalizePet(apiPet) {
   const breed = apiPet.breed || apiPet.Breed || "Unknown";
@@ -59,6 +64,29 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+// -----------------------------------------------------------------------------
+// localStorage helpers
+// -----------------------------------------------------------------------------
+
+function loadFromStorage(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (err) {
+    console.warn(`Could not read ${key} from localStorage:`, err);
+    return null;
+  }
+}
+
+function saveToStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (err) {
+    console.warn(`Could not save ${key} to localStorage:`, err);
+  }
+}
+
 const NAV_ITEMS = [
   { id: "overview", label: "Overview", icon: Home },
   { id: "managePets", label: "Manage pets", icon: LayoutGrid },
@@ -75,10 +103,23 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+  // Tracks whether initial load (from storage or fetch) has finished,
+  // so we don't immediately overwrite storage with an empty array.
+  const [hydrated, setHydrated] = useState(false);
+
   const loadPets = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
+      // Prefer whatever's saved locally so edits survive a refresh.
+      const stored = loadFromStorage(PETS_STORAGE_KEY);
+      if (stored && Array.isArray(stored)) {
+        setPets(stored);
+        setLoading(false);
+        setHydrated(true);
+        return;
+      }
+
       const res = await fetch(PETS_JSON_PATH);
       if (!res.ok)
         throw new Error(
@@ -90,12 +131,30 @@ export default function Dashboard() {
       setError(err.message || "Could not load pets.json.");
     } finally {
       setLoading(false);
+      setHydrated(true);
     }
   }, []);
 
   useEffect(() => {
     loadPets();
+    const storedRequests = loadFromStorage(REQUESTS_STORAGE_KEY);
+    if (storedRequests && Array.isArray(storedRequests)) {
+      setRequests(storedRequests);
+    }
   }, [loadPets]);
+
+  // Persist pets to localStorage any time they change, once we've hydrated.
+  useEffect(() => {
+    if (!hydrated) return;
+    saveToStorage(PETS_STORAGE_KEY, pets);
+    window.dispatchEvent(new Event(PETS_UPDATED_EVENT));
+  }, [pets, hydrated]);
+
+  // Persist requests to localStorage any time they change, once we've hydrated.
+  useEffect(() => {
+    if (!hydrated) return;
+    saveToStorage(REQUESTS_STORAGE_KEY, requests);
+  }, [requests, hydrated]);
 
   const stats = useMemo(() => {
     const total = pets.length;
@@ -151,6 +210,19 @@ export default function Dashboard() {
     );
   }
 
+  // Wipes local edits and reloads the original pets.json data.
+  function resetToDefaults() {
+    try {
+      localStorage.removeItem(PETS_STORAGE_KEY);
+      localStorage.removeItem(REQUESTS_STORAGE_KEY);
+    } catch (err) {
+      console.warn("Could not clear localStorage:", err);
+    }
+    setRequests([]);
+    setHydrated(false);
+    loadPets().then(() => setHydrated(true));
+  }
+
   function handleNavClick(id) {
     setActiveView(id);
     setMobileNavOpen(false);
@@ -168,7 +240,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-2">
               <PawPrint className="w-6 h-6 text-[#da760c]" />
               <span
-                className="text-xl tracking-tight"
+                className="text-2xl tracking-tight"
                 style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
               >
                 Shelter Admin
@@ -220,6 +292,10 @@ export default function Dashboard() {
                 </button>
               );
             })}
+
+            <Button variant="link" size="default">
+              <Link to={"/"}>Home</Link>
+            </Button>
           </nav>
         </aside>
 
@@ -317,7 +393,7 @@ function Overview({ stats, pets, requests }) {
       <div className="flex flex-wrap gap-4 mb-8">
         <StatCard label="Total pets" value={stats.total} />
         <StatCard label="Available" value={stats.available} accent="#4FA88C" />
-        <StatCard label="Pending" value={stats.pending} accent="#E8A33D" />
+        <StatCard label="Pending" value={stats.pending} accent="#d28f2b" />
         <StatCard label="Adopted" value={stats.adopted} accent="#D9695F" />
         <StatCard
           label="Open requests"
@@ -378,7 +454,7 @@ function Overview({ stats, pets, requests }) {
 export function StatusBadge({ status }) {
   const map = {
     available: { label: "Available", bg: "#4FA88C22", color: "#4FA88C" },
-    pending: { label: "Pending", bg: "#E8A33D22", color: "#E8A33D" },
+    pending: { label: "Pending", bg: "#E8A33D22", color: "#d28f2b" },
     adopted: { label: "Adopted", bg: "#D9695F22", color: "#D9695F" },
     approved: { label: "Approved", bg: "#4FA88C22", color: "#4FA88C" },
     rejected: { label: "Rejected", bg: "#D9695F22", color: "#D9695F" },
@@ -386,7 +462,7 @@ export function StatusBadge({ status }) {
   const s = map[status] || map.available;
   return (
     <span
-      className="text-xs px-2 py-0.5 rounded-full font-medium shrink-0"
+      className="text-sm px-2 py-1 rounded-full font-medium shrink-0"
       style={{ backgroundColor: s.bg, color: s.color }}
     >
       {s.label}

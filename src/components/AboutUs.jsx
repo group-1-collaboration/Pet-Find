@@ -1,7 +1,7 @@
 import React from 'react'
 import AboutImage from "@/assets/about.jpg"
 import { ArrowRight } from 'lucide-react'
-
+import { Link } from 'react-router-dom'
 
 function AboutUs() {
   return (
@@ -21,7 +21,7 @@ function AboutUs() {
          <h1 className='text-7xl text-orange-500 font-bold'>About Us</h1>
           <p className='text-lg'>Every adoption is the beginning of a beautiful story. We work with shelters and rescue organizations to help pets find families where they can feel safe, loved, and cherished. </p>
           <p className='text-lg'> By making it easy to browse available pets and book a visit, we hope to make finding your newest family member a joyful experience.</p>
-          <a className='text-blue-600' href="#learn-more">Learn more <ArrowRight /></a>
+          <Link to='/about' className='text-blue-600' >Learn more <ArrowRight /></Link>
           
         </div>
         

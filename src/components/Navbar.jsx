@@ -7,15 +7,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useAuth } from "@/context/AuthContext"
 import { ThemeContext } from "./context/ThemeContext"
 
+
 function Navbar() {
   const {favourites} = useContext(FavouritesContext)
   const [isFavouritesOpen, setisFavouritesOpen] = useState(false)
   const favouriteCount = favourites?.length || 0;
 
    const { theme, toggleTheme } = useContext(ThemeContext);
+   const {user,isAuthenticated ,logout} = useAuth();
 
   return (
-<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20  bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
+<nav className="sticky top-0 z-50 w-full border-b border-orange-100/20 bg-black/80 backdrop-blur-md dark:bg-black supports-[backdrop-filter]:bg-black/60 flex justify-between items-center p-4 text-white">
     {/* Clickable Brand Title navigating back home */}
       <div className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <Link to={'/'}>
@@ -31,24 +33,27 @@ function Navbar() {
 
      
    <div>
-    <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
+    <Link to={'/about'} className="hover:text-orange-400 transition duration-300">
       About us 
     </Link>
     </div>
 
    <div>
-    <Link to={'/footer'} className="hover:text-orange-400 transition duration-300">
+    <Link to={'/contact'} className="hover:text-orange-400 transition duration-300">
       contact
     </Link>
     </div>
 
-    {/* favourites pop up */}
+  {/*make the favorites icon conditionally render for a logged in user*/}
+    {/* favorites pop up */}
+   {isAuthenticated && (
     <Dialog 
     open={isFavouritesOpen}
     onOpenChange={setisFavouritesOpen}>
       {/* button that opens pop up */}
      <DialogTrigger asChild>
       <button className="relative p-2">
+
         <Heart className="w-5 h-5"/>
 
         {/* only show the number when favourites exists */}
@@ -89,24 +94,49 @@ function Navbar() {
       )}
      </DialogContent>
     </Dialog>
-        {/* <Link>
-          <Heart />
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-sz">{favourites.length}</span>
-        </Link> */}
+   )}
+    
         
          {/* Theme Controller */}
         <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
           {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
-          <div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">             
 
-            <Link to={'/login'}>
+{isAuthenticated && user?.role === "admin" && (
+  <Link to="/dashboard">
+    <Button className="bg-orange-700 text-white rounded hover:bg-orange-600">
+      Admin Dashboard
+    </Button>
+  </Link>
+)}
+
+<div className="flex items-center gap-3 pl-2 border-l border-muted text-sm font-medium">             
+{isAuthenticated ? (
+  <>
+  <div className="flex items-center gap-4">
+    <span className="font-medium text-slate-800 dark:text-white">
+      👤 {user.fullName}
+    </span>
+
+    <Button
+      onClick={logout}
+      className="rounded-md bg-orange-500 px-3 py-2 text-white hover:bg-orange-600"
+    >
+      Logout
+    </Button>
+    </div >
+    </>
+ ) : (
+<>
+<Link to={'/login'}>
              <Button className="bg-orange-400 text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity">
               Login
              </Button>
             </Link>
-            
-          </div>
+</>        
+)}
+
+</div>
 </nav>
  
 )
