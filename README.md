@@ -136,15 +136,21 @@ pet-adoption-platform/
 │   ├── components/
 │   │   ├── Navbar.jsx
 │   │   ├── Footer.jsx
-│   │   ├── Hero.jsx
-│   │   ├── PetCard.jsx
+│   │   ├── Header.jsx
+│   │   ├── AboutUs.jsx
 │   │   ├── BookingForm.jsx
-│   │   ├── SearchBar.jsx
-│   │   └── ThemeToggle.jsx
+│   │   ├── BookingForm.jsx
+│   │   ├── categories.jsx
+│   │   └── category pets.jsx
+│   │   └── editPet.jsx
+│   │   └── ManagePets.jsx
+│   │   └── ManageRequests.jsx
+│   │   └── ui
 │   │
 │   ├── context/
 │   │   ├── AuthContext.jsx
 │   │   └── ThemeContext.jsx
+│   │   └── Favourites.jsx
 │   │
 │   ├── pages/
 │   │   ├── Home.jsx
