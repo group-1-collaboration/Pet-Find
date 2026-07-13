@@ -6,7 +6,6 @@ const Success = () => {
       <div className="bg-white shadow-xl rounded-3xl p-10 text-center max-w-md">
 
         <div className="text-6xl mb-5">
-          🎉
         </div>
 
         <h1 className="text-3xl font-bold text-orange-600 mb-4">

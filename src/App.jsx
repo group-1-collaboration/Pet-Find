@@ -21,6 +21,7 @@ import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import About from './pages/About'
+import Success from "./pages/Success";
 
 function Home(){
   return(
@@ -56,6 +57,7 @@ function App() {
         <Route path="/terms" element={<Terms/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/booking/:id" element={<BookingForm />} />
+        <Route path="/success" element={<Success />} />
         <Route path="/adopt/:id" element={<AdoptionForm />} />
 
         <Route path="/" element={<Home/>} />
