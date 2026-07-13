@@ -44,26 +44,34 @@ const BookingForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const bookings =
-      JSON.parse(localStorage.getItem("bookings")) || [];
+  const requests =
+    JSON.parse(localStorage.getItem("shelter_admin_requests")) || [];
 
-    const newBooking = {
-      petId: id,
-      ...formData,
-    };
-
-    bookings.push(newBooking);
-
-    localStorage.setItem(
-      "bookings",
-      JSON.stringify(bookings)
-    );
-
-    navigate("/success");
+  const newRequest = {
+    id: `request-${Date.now()}`,
+    petId: id,
+    adopterName: formData.fullName,
+    email: formData.email,
+    phone: formData.phone,
+    date: formData.date,
+    time: formData.time,
+    message: formData.message,
+    status: "pending",
+    createdAt: new Date().toISOString(),
   };
+
+  requests.push(newRequest);
+
+  localStorage.setItem(
+    "shelter_admin_requests",
+    JSON.stringify(requests)
+  );
+
+  navigate("/success");
+};
 
   return (
         <section className="min-h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20" style={{
