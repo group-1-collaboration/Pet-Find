@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Button } from "@base-ui/react"
+import { Button } from "@/components/ui/button"
 import { Heart,Sun,Moon } from "lucide-react"
 import { useContext, useState } from "react"
 import { FavouritesContext } from './context/FavouritesContext'
@@ -44,63 +44,63 @@ function Navbar() {
     </Link>
     </div>
 
-  {/*make the favorites icon conditionally render for a logged in user*/}
-    {/* favorites pop up */}
-   {isAuthenticated && (
-    <Dialog 
+  {/* Show favourites only for logged-in users */}
+{isAuthenticated && (
+  <Dialog
     open={isFavouritesOpen}
-    onOpenChange={setisFavouritesOpen}>
-      {/* button that opens pop up */}
-     <DialogTrigger asChild>
-      <button className="relative p-2">
+    onOpenChange={setisFavouritesOpen}
+  >
+    {/* Button that opens the dialog */}
+    <DialogTrigger
+      className="relative inline-flex items-center justify-center rounded-lg p-2 hover:bg-muted transition-colors"
+    >
+      <Heart className="w-5 h-5" />
 
-        <Heart className="w-5 h-5"/>
+      {favouriteCount > 0 && (
+        <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs font-bold text-white">
+          {favouriteCount}
+        </span>
+      )}
+    </DialogTrigger>
 
-        {/* only show the number when favourites exists */}
-        {favouriteCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs font-bold text-white">
-            {favouriteCount}
-          </span>
-        )}
-      </button>
-     </DialogTrigger>
-
-     {/* pop up content */}
-     <DialogContent className="text-white">
+    {/* Dialog content */}
+    <DialogContent className="text-white">
       <DialogHeader>
         <DialogTitle className="text-white">
-          My Favourite pets
+          My Favourite Pets
         </DialogTitle>
       </DialogHeader>
 
-      {/* If there are no favourites */}
       {favourites.length === 0 ? (
         <p>You haven't added any favourite pets yet.</p>
-      ): (
-        //loop through favourites pets
+      ) : (
         favourites.map((pet) => (
-          <div 
-          key={pet.id}
-          className="flex items-center gap-4 border-b py-3">
-
-            <img src={pet.image} alt={pet.name} className="w-16 h-16 object-cover rounded-lg"/>
+          <div
+            key={pet.id}
+            className="flex items-center gap-4 border-b py-3"
+          >
+            <img
+              src={pet.image}
+              alt={pet.name}
+              className="w-16 h-16 rounded-lg object-cover"
+            />
 
             <div>
               <h3 className="font-bold">{pet.name}</h3>
-              <p className="text-sm">{pet.Breed}</p>
+              <p className="text-sm">{pet.breed}</p>
             </div>
           </div>
         ))
       )}
-     </DialogContent>
-    </Dialog>
-   )}
-    
-        
+    </DialogContent>
+  </Dialog>
+)}
+        <div>
          {/* Theme Controller */}
         <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-9 w-9">
           {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
+        </div>
 
 {isAuthenticated && user?.role === "admin" && (
   <Link to="/dashboard">
