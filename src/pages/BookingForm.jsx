@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BookingFormBackground from "@/assets/about.jpg"
 
 const BookingForm = () => {
   const navigate = useNavigate();
@@ -65,10 +66,17 @@ const BookingForm = () => {
   };
 
   return (
-   <div className="max-w-xl mx-auto mt-10 p-6 bg-black/80 shadow-lg rounded-lg text-white">
+        <section className="min-h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20" style={{
+                backgroundImage:`url(${BookingFormBackground})`,
+                backgroundSize:"cover",
+                backgroundPosition:"center",
+                height: "500px",
+         }}>
+    
+   <div className="w-full rounded-3xl border border-white/30 bg-white/10 backdrop-blur-xl shadow-2xl p-8 text-slate-800">
 
   <h2 className="text-2xl font-bold mb-6">
-    Book a Shelter Visit
+    Book a Shelter Visit.
   </h2>
 
   <form onSubmit={handleSubmit} className="space-y-4">
@@ -186,6 +194,7 @@ const BookingForm = () => {
   </form>
 
 </div>
+</section>
 )};
 
 export default BookingForm;
