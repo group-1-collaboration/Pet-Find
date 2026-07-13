@@ -1,73 +1,96 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import petData from "../data/pets.json"
-import { useParams } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import {useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import petData from "../data/pets.json";
+import { Card, CardContent, CardTitle } from "./ui/card";
+import { useAuth } from "@/context/AuthContext";
 
 function PetDetails() {
-    //Get the id from the URL
-    const {id} = useParams()
-          // request adoption navigate
-     const navigate = useNavigate();
+  // Get the id from the URL
+  const { id } = useParams();
 
-    //find the selected pet
-    const pet = petData.find((pet) => pet.id === Number(id))
-    if(!pet) {
-        return <h2>Pet not found.</h2>
+  // Navigation
+  const navigate = useNavigate();
+
+  // Logged-in user
+  const { user } = useAuth();
+
+  // Find the selected pet
+  const pet = petData.find((pet) => pet.id === Number(id));
+
+  if (!pet) {
+    return (
+      <h2 className="text-center mt-10 text-xl font-semibold">
+        Pet not found.
+      </h2>
+    );
+  }
+
+  // Handle adoption request
+  const handleRequestAdoption = () => {
+    if (!user) {
+      alert("Please sign in before requesting an adoption.");
+      return;
     }
 
+    navigate(`/adopt/${pet.id}`);
+  };
+
   return (
-    <Card className='max-w-6xl mx-auto mt-10 shadow-lg'>
+    <Card className="max-w-6xl mx-auto mt-10 shadow-lg dark:bg-black/80 dark:text-white">
+      <CardContent className="grid items-start gap-5 p-6 md:grid-cols-2">
+        <img
+          src={pet.image}
+          alt={pet.name}
+          className="w-full rounded-lg object-contain"
+        />
 
-      <CardContent className="p-3 grid md:grid-cols-2 gap-5 items-start">
-        <img src={pet.image} alt={pet.name} className='w-full object-contain  rounded-lg'/>
+        <div>
+          <CardTitle className="mt-6 text-3xl font-bold">
+            {pet.name}
+          </CardTitle>
 
-     <div>
-      <CardTitle className='text-3xl font-bold mt-6'>
-        {pet.name}
-      </CardTitle>
-     <div className='space-y-4'>
-       <p className='mt-2'>
-        <strong>Breed:</strong> {pet.Breed}
-      </p>
+          <div className="mt-4 space-y-4">
+            <p>
+              <strong>Breed:</strong> {pet.breed || pet.Breed}
+            </p>
 
-      <p>
-        <strong>Gender:</strong> {pet.gender}
-      </p>
+            <p>
+              <strong>Gender:</strong> {pet.gender}
+            </p>
 
-      <p>
-        <strong>Age:</strong> {pet.age} years
-      </p>
+            <p>
+              <strong>Age:</strong> {pet.age}
+            </p>
 
-      <p className=''>
-        <strong>Description</strong> {pet.description}
-      </p>
+            <p>
+              <strong>Description:</strong> {pet.description}
+            </p>
 
-      <p>
-        <strong>Vaccinated:</strong> {""}
-        {pet.vaccinated ? "Yes": "No"}
-      </p>
+            <p>
+              <strong>Vaccinated:</strong>{" "}
+              {pet.vaccinated ? "Yes" : "No"}
+            </p>
 
-      <p>
-        <strong>House Trained:</strong> {""}
-        {pet.houseTrained ? "Yes" : "No"}
-      </p>
-      <p>
-        <strong>Health Status:</strong> {pet.healthStatuse}
-      </p>
+            <p>
+              <strong>House Trained:</strong>{" "}
+              {pet.houseTrained ? "Yes" : "No"}
+            </p>
 
-      <button onClick={() => navigate(`/adopt/${pet.id}`)} className='mt-6 bg-orange-500 text-white px-6 p-4 rounded-lg hover:bg-orange-600 cursor-pointer'>
-        Request Adoption
-      </button>
-     </div>
-      
-</div>
-  
+            <p>
+              <strong>Health Status:</strong>{" "}
+              {pet.healthStatus || pet.healthStatuse}
+            </p>
+
+            <button
+              onClick={handleRequestAdoption}
+              className="mt-6 rounded-lg bg-orange-500 px-6 py-3 text-white transition hover:bg-orange-600"
+            >
+              Request Adoption
+            </button>
+          </div>
+        </div>
       </CardContent>
-      
     </Card>
-  )
+  );
 }
 
-export default PetDetails
+export default PetDetails;

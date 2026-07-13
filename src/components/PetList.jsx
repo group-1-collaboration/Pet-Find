@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import PetCard from "./PetCard";
 import SearchBar from "./SearchBar";
-import Categories from "./Categories";
 import { StatusBadge } from "../pages/Dashboard";
-
+import Categories from './Categories';
+//JSON data
 //JSON data (fallback, used only if nothing's been saved in localStorage yet)
 import petData from "../data/pets.json";
 
@@ -75,8 +75,10 @@ function readPets() {
 }
 
 function PetList() {
+    //store the pets in state
+   // const[pets] = useState(petData);
+    const [search, setSearch] = useState("");
   const [pets, setPets] = useState(readPets);
-  const [search, setSearch] = useState("");
   // const [category, setCategory] = useState("All")
 
   const refreshPets = useCallback(() => {
@@ -84,19 +86,20 @@ function PetList() {
   }, []);
 
   useEffect(() => {
-    // Same-tab updates (admin dashboard dispatches this after every save).
-    window.addEventListener(PETS_UPDATED_EVENT, refreshPets);
-    // Cross-tab updates (e.g. admin dashboard open in another tab/window).
-    window.addEventListener("storage", (e) => {
-      if (e.key === PETS_STORAGE_KEY) refreshPets();
-    });
+  const handleStorage = (e) => {
+    if (e.key === PETS_STORAGE_KEY) {
+      refreshPets();
+    }
+  };
 
-    return () => {
-      window.removeEventListener(PETS_UPDATED_EVENT, refreshPets);
-      window.removeEventListener("storage", refreshPets);
-    };
-  }, [refreshPets]);
+  window.addEventListener(PETS_UPDATED_EVENT, refreshPets);
+  window.addEventListener("storage", handleStorage);
 
+  return () => {
+    window.removeEventListener(PETS_UPDATED_EVENT, refreshPets);
+    window.removeEventListener("storage", handleStorage);
+  };
+}, [refreshPets]);
   // Hide adopted pets from the public list, and let people browse the rest.
   const visiblePets = pets.filter((pet) => pet.status !== "adopted");
 
