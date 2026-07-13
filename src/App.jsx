@@ -42,7 +42,8 @@ function App() {
   const {user,isAuthenticated}= useAuth();
 
   return (
-      <Routes>
+    <div className='min-h-screen bg-white dark:bg-black text-black  dark:text-white'>
+       <Routes>
 
         <Route element={<MainLayout/>}>
         
@@ -70,6 +71,8 @@ function App() {
         }
         />
       </Routes>
+    </div>
+     
   );
 }
 

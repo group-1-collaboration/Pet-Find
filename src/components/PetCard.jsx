@@ -23,7 +23,7 @@ function PetCard({pet}) {
     }
   
   return (
-    <div className='bg-white rounded-lg shadow-md p-4 '>
+    <div className='bg-white text-black rounded-lg shadow-md p-4 dark:bg-black/80 dark:text-white'>
       
       <img src={pet.image} alt={pet.name} className='w-full h-100 object-cover rounded-md'/>
 
@@ -50,7 +50,9 @@ function PetCard({pet}) {
      </Link>
       
       <Heart
+      //When the button is clicked, run the function that adds or removes the pets from favourites
       onClick={toggleFavourites}
+      //check whether this pet is already in favourites
       fill={favourites.some(item => item.id === pet.id)
              ? "red"
              : "none"

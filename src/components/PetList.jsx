@@ -4,6 +4,11 @@ import SearchBar from "./SearchBar";
 import Categories from "./Categories";
 import { StatusBadge } from "../pages/Dashboard";
 
+import {useState} from 'react'
+import PetCard from './PetCard';
+import SearchBar from './SearchBar';
+import Categories from './Categories';
+//JSON data
 //JSON data (fallback, used only if nothing's been saved in localStorage yet)
 import petData from "../data/pets.json";
 
@@ -75,6 +80,10 @@ function readPets() {
 }
 
 function PetList() {
+    //store the pets in state
+    const[pets] = useState(petData);
+    const [search, setSearch] = useState("");
+    const filteredPets = pets.filter((pet) => pet.Breed.toLowerCase().includes(search.toLowerCase()))
   const [pets, setPets] = useState(readPets);
   const [search, setSearch] = useState("");
   // const [category, setCategory] = useState("All")
