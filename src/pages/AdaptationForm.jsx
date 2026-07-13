@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import {useNavigate } from "react-router-dom";
+import AdoptionFormBackground from  "@/assets/loginbg.png";
 
 function AdoptionForm() {
   const { id } = useParams();
@@ -21,9 +22,21 @@ function AdoptionForm() {
   };
 
   return (
-  <div className="max-w-xl mx-auto mt-10 p-6 bg-black/80 shadow-lg rounded-lg text-white">
+<section
+  className="min-h-screen bg-cover bg-center bg-fixed flex items-center justify-center px-4 md:px-10 py-12"
+  style={{
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(${AdoptionFormBackground})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div
+    className="
+     w-full max-w-md rounded-3xl border border-white/30 bg-white/10 backdrop-blur-xl shadow-2xl p-8 text-slate-800
+    "
+  >
 
-  <h2 className="text-2xl font-bold mb-6">
+  <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-orange-600">
     Adoption Request Form
   </h2>
 
@@ -246,6 +259,8 @@ function AdoptionForm() {
   </form>
 
 </div>
+         </section>
+ 
 
   );
 }
