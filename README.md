@@ -281,9 +281,9 @@ Potential future enhancements include:
 
 | Role               | Responsibilities                              |
 | ------------------ | --------------------------------------------- |
-| Project Manager    | Planning, coordination, GitHub management, authentication and navigation|
+| Project Manager    | GitHub management, navigation ,Authentication and protected routes|
 | Frontend Developer | pet listings, API integration      |
-| Frontend Developer | Authentication, protected routes              |
+| Frontend Developer |  Admin dashboard and functionality             |
 | Frontend Developer | Booking system,favourites feature   |
 
 ---
